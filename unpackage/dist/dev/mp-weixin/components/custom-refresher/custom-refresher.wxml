@@ -1,0 +1,1 @@
+<view class="refresher data-v-d8ff52f8"><image class="refresher-image data-v-d8ff52f8" mode="aspectFit" src="http://www.zxlee.cn/github/uni-z-paging/refresher_loading.gif"></image><text class="refresher-text data-v-d8ff52f8">{{statusText}}</text></view>

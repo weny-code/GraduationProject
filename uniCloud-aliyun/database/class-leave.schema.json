@@ -1,0 +1,84 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"stu_id": {
+			"description": "学生ID",
+			"bsonType": "string",
+			"title": "学生ID",
+			"trim": "both",
+			"foreignKey": "uni-id-users._id"
+		},
+		"stu_name": {
+			"description": "学生姓名",
+			"bsonType": "string",
+			"title": "学生姓名",
+			"trim": "both"
+		},
+		"approver_id": {
+			"description": "审批老师ID",
+			"bsonType": "string",
+			"title": "审批人ID",
+			"trim": "both",
+			"foreignKey": "uni-id-users._id"
+		},
+		"leave_reason": {
+			"description": "请假原因",
+			"bsonType": "string",
+			"title": "请假原因",
+			"trim": "both"
+		},
+		"leave_explain": {
+			"description": "请假说明",
+			"bsonType": "string",
+			"title": "请假说明"
+		},
+		"submit_time": {
+			"bsonType": "timestamp",
+			"description": "提交时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"start_time": {
+			"description": "开始时间",
+			"bsonType": "string"
+		},
+		"end_time": {
+			"description": "结束时间",
+			"bsonType": "string"
+		},
+		"class_id": {
+			"description": "班级ID",
+			"bsonType": "string",
+			"title": "班级ID",
+			"trim": "both",
+			"foreignKey": "class-list._id"
+		},
+		"result": {
+			"bsonType": "int",
+			"description": "审批结果：0 审批中 1 通过 2 拒绝",
+			"title": "审批结果",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "审批中",
+				"value": 0
+			}, {
+				"text": "通过",
+				"value": 1
+			}, {
+				"text": "拒绝",
+				"value": 2
+			}]
+		}
+	}
+}

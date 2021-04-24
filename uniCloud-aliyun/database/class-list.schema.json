@@ -1,0 +1,45 @@
+{
+	"bsonType": "object",
+	"required": ["name"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"class_name": {
+			"bsonType": "string",
+			"description": "班级名称",
+			"title": "班级名称",
+			"trim": "both"
+		},
+		"creator_id": {
+			"bsonType": "string",
+			"description": "创建者的userid， 参考`uni-id-users` 表",
+			"foreignKey": "uni-id-users._id",
+			"trim": "both"
+		},
+		"class_size": {
+			"bsonType": "int",
+			"description": "班级人数",
+			"trim": "both",
+			"minimum": 1,
+			"maximum": 999
+		},
+		"class_members": {
+			"bsonType": "array",
+			"arrayType": "object",
+			"description": "班级成员"
+		},
+		"published_notices": {
+			"bsonType": "array",
+			"arrayType": "string",
+			"description": "已发布的广播",
+			"foreignKey": "class-notice._id"
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "z-paging": "/uni_modules/z-paging/components/z-paging/z-paging",
+    "custom-refresher": "/components/custom-refresher/custom-refresher",
+    "custom-nomore": "/components/custom-nomore/custom-nomore",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "loading": "/components/loading"
+  }
+}

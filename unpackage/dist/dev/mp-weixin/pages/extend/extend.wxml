@@ -1,0 +1,1 @@
+<view><u-tabbar vue-id="a7835580-1" list="{{tabbars}}" mid-button="{{true}}" bind:__l="__l"></u-tabbar></view>

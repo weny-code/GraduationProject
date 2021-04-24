@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "创建班级",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
+    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal"
+  }
+}

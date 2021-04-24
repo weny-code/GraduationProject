@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "z-paging-refresh": "/uni_modules/z-paging/components/z-paging/z-paging-refresh",
+    "z-paging-load-more": "/uni_modules/z-paging/components/z-paging/z-paging-load-more",
+    "z-paging-empty-view": "/uni_modules/z-paging/components/z-paging/z-paging-empty-view"
+  }
+}

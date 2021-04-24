@@ -1,0 +1,16 @@
+{
+  "component": true,
+  "usingComponents": {
+    "u-mask": "/node-modules/uview-ui/components/u-mask/u-mask",
+    "z-paging": "/uni_modules/z-paging/components/z-paging/z-paging",
+    "custom-refresher": "/components/custom-refresher/custom-refresher",
+    "custom-nomore": "/components/custom-nomore/custom-nomore",
+    "u-subsection": "/node-modules/uview-ui/components/u-subsection/u-subsection",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "class-card": "/components/classCard/classCard",
+    "loading": "/components/loading",
+    "notice-card": "/components/noticeCard/noticeCard"
+  }
+}

@@ -1,0 +1,163 @@
+/* z-paging
+github地址:https://github.com/SmileZXLee/uni-z-paging
+dcloud地址:https://ext.dcloud.net.cn/plugin?id=3935
+反馈QQ群：790460711
+
+公用的静态css资源 */
+.zp-loading-more-line-loading-image.data-v-3242967f {
+	margin-right: 8rpx;
+	width: 28rpx;
+	height: 28rpx;
+
+	-webkit-animation: loading-flower-data-v-3242967f 1s steps(12) infinite;
+	        animation: loading-flower-data-v-3242967f 1s steps(12) infinite;
+
+	color: #666666;
+}
+@-webkit-keyframes loading-flower-data-v-3242967f {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+@keyframes loading-flower-data-v-3242967f {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+.zp-custom-refresher-container.data-v-3242967f {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.zp-custom-refresher-left.data-v-3242967f {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.zp-custom-refresher-left-image.data-v-3242967f {
+	width: 30rpx;
+	height: 30rpx;
+	-webkit-transform: rotate(180deg);
+	        transform: rotate(180deg);
+	margin-right: 8rpx;
+}
+.zp-custom-refresher-arrow-top.data-v-3242967f {
+
+	-webkit-animation: refresher-arrow-top-data-v-3242967f 0.25s linear;
+	        animation: refresher-arrow-top-data-v-3242967f 0.25s linear;
+	-webkitanimation: refresher-arrow-top 0.25s linear;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+.zp-custom-refresher-arrow-down.data-v-3242967f {
+
+	animation: refresher-arrow-down-data-v-3242967f 0.25s linear;
+	-webkit-animation: refresher-arrow-down-data-v-3242967f 0.25s linear;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+.zp-custom-refresher-right.data-v-3242967f {
+	font-size: 26rpx;
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.zp-custom-refresher-right-text.data-v-3242967f {
+
+
+
+
+
+	color: #555555
+}
+.zp-custom-refresher-right-black.data-v-3242967f {
+	color: #666666;
+}
+.zp-custom-refresher-right-white.data-v-3242967f {
+	color: #efefef;
+}
+@-webkit-keyframes refresher-arrow-top-data-v-3242967f {
+0% {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+}
+100% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+}
+@keyframes refresher-arrow-top-data-v-3242967f {
+0% {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+}
+100% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+}
+@-webkit-keyframes refresher-arrow-down-data-v-3242967f {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+100% {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+}
+}
+@keyframes refresher-arrow-down-data-v-3242967f {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+100% {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg);
+}
+}
+
+

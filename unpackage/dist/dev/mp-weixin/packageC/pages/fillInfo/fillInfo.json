@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "完善身份信息",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
+    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal"
+  }
+}

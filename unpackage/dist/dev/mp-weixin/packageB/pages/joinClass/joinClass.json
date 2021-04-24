@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "加入班级",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal"
+  }
+}

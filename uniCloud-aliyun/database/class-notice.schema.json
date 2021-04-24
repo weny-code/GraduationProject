@@ -1,0 +1,74 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"type": {
+			"bsonType": "string",
+			"description": "广播类型",
+			"title": "广播类型",
+			"trim": "both"
+		},
+		"title": {
+			"bsonType": "string",
+			"description": "广播标题",
+			"title": "广播标题",
+			"trim": "both"
+		},
+		"content": {
+			"bsonType": "string",
+			"description": "广播内容",
+			"title": "广播内容",
+			"trim": "both"
+		},
+		"form_item": {
+			"bsonType": "array",
+			"arrayType": "object",
+			"description": "填表项",
+			"title": "填表内容"
+		},
+		"publisher_id": {
+			"bsonType": "string",
+			"description": "发布者ID",
+			"title": "发布者ID",
+			"trim": "both",
+			"foreignKey": "uni-id-users._id"
+		},
+		"class_id": {
+			"bsonType": "array",
+			"description": "班级ID集合",
+			"arrayType": "string",
+			"title": "班级ID",
+			"foreignKey": "class-list._id",
+			"trim": "both"
+		},
+		"file_list": {
+			"bsonType": "array",
+			"description": "文件列表",
+			"arrayType": "object",
+			"title": "文件列表"
+		},
+		"release_time": {
+			"bsonType": "timestamp",
+			"description": "发布时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"confirmed": {
+			"bsonType": "array",
+			"description": "确认成员",
+			"arrayType": "object",
+			"foreignKey": "uni-id-users._id",
+			"title": "确认成员"
+		}
+	}
+}

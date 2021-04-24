@@ -1,0 +1,112 @@
+/* z-paging
+github地址:https://github.com/SmileZXLee/uni-z-paging
+dcloud地址:https://ext.dcloud.net.cn/plugin?id=3935
+反馈QQ群：790460711
+
+公用的静态css资源 */
+.zp-loading-more-line-loading-image.data-v-0f887f1e {
+	margin-right: 8rpx;
+	width: 28rpx;
+	height: 28rpx;
+
+	-webkit-animation: loading-flower-data-v-0f887f1e 1s steps(12) infinite;
+	        animation: loading-flower-data-v-0f887f1e 1s steps(12) infinite;
+
+	color: #666666;
+}
+@-webkit-keyframes loading-flower-data-v-0f887f1e {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+@keyframes loading-flower-data-v-0f887f1e {
+0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+}
+to {
+		-webkit-transform: rotate(1turn);
+		transform: rotate(1turn);
+}
+}
+.z-paging-content.data-v-0f887f1e,
+.zp-scroll-view.data-v-0f887f1e {
+
+	width: 100%;
+	height: 100%;
+}
+.zp-paging-main.data-v-0f887f1e {
+	height: 100%;
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+}
+.zp-paging-container.data-v-0f887f1e {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	position: relative;
+}
+.zp-chat-record-loading-container.data-v-0f887f1e {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	height: 60rpx;
+	width: 100%;
+	font-size: 26rpx;
+}
+.zp-chat-record-loading-custom-image.data-v-0f887f1e {
+	width: 35rpx;
+	height: 35rpx;
+
+	-webkit-animation: loading-flower-data-v-0f887f1e 1s linear infinite;
+	        animation: loading-flower-data-v-0f887f1e 1s linear infinite;
+}
+.zp-custom-refresher-container.data-v-0f887f1e {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.zp-n-refresh-container.data-v-0f887f1e {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	width: 750rpx;
+}
+

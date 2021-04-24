@@ -1,0 +1,42 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"uploader_id": {
+			"description": "上传者ID",
+			"bsonType": "string",
+			"title": "上传者ID",
+			"trim": "both",
+			"foreignKey": "uni-id-users._id"
+		},
+		"upload_time": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"class_id": {
+			"description": "班级ID",
+			"bsonType": "string",
+			"title": "班级ID",
+			"trim": "both",
+			"foreignKey": "class-list._id"
+		},
+		"file_detail": {
+			"description": "文件详情",
+			"bsonType": "object",
+			"title": "文件详情",
+			"trim": "both"
+		}
+	}
+}

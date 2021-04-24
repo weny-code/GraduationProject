@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "uni-file-picker": "/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-gap": "/node-modules/uview-ui/components/u-gap/u-gap",
+    "u-checkbox": "/node-modules/uview-ui/components/u-checkbox/u-checkbox",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-popup": "/node-modules/uview-ui/components/u-popup/u-popup",
+    "u-grid": "/node-modules/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/node-modules/uview-ui/components/u-grid-item/u-grid-item",
+    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal",
+    "clock-card": "/packageB/components/clockCard/clockCard"
+  }
+}

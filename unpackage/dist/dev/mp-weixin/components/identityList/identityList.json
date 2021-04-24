@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "u-mask": "/node-modules/uview-ui/components/u-mask/u-mask",
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
+    "loading": "/components/loading"
+  }
+}

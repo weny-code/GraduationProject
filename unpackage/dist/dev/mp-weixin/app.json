@@ -1,0 +1,100 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/home/home",
+    "pages/addressBook/addressBook",
+    "pages/extend/extend",
+    "pages/myCenter/myCenter",
+    "pages/release/release"
+  ],
+  "subPackages": [
+    {
+      "root": "packageB",
+      "pages": [
+        "pages/createClass/createClass",
+        "pages/upLoadFile/upLoadFile",
+        "pages/joinClass/joinClass",
+        "pages/quitClass/quitClass",
+        "pages/deleteClass/deleteClass",
+        "pages/publishNotice/publishNotice",
+        "pages/noticeDetails/noticeDetails",
+        "pages/publishClock/publishClock",
+        "pages/applyLeave/applyLeave",
+        "pages/handleApply/handleApply",
+        "pages/fileList/fileList"
+      ]
+    },
+    {
+      "root": "packageC",
+      "pages": [
+        "pages/fillInfo/fillInfo",
+        "pages/chooseRole/chooseRole",
+        "pages/confirmedList/confirmedList",
+        "pages/chooseClass/chooseClass",
+        "pages/leaveList/leaveList",
+        "pages/leaveDetail/leaveDetail"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#F7F8FA"
+  },
+  "tabBar": {
+    "color": "#909399",
+    "selectedColor": "#303133",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/icon/home.png",
+        "selectedIconPath": "static/icon/home_select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/addressBook/addressBook",
+        "iconPath": "static/icon/addressBook.png",
+        "selectedIconPath": "static/icon/addressBook_select.png",
+        "text": "通讯录"
+      },
+      {
+        "pagePath": "pages/release/release",
+        "iconPath": "static/icon/min_button_select.png",
+        "selectedIconPath": "static/icon/min_button_select.png",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/extend/extend",
+        "iconPath": "static/icon/extend.png",
+        "selectedIconPath": "static/icon/extend_select.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/myCenter/myCenter",
+        "iconPath": "static/icon/myCenter.png",
+        "selectedIconPath": "static/icon/myCenter_select.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "packageB"
+      ]
+    },
+    "pages/home/home": {
+      "network": "all",
+      "packages": [
+        "packageC"
+      ]
+    }
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

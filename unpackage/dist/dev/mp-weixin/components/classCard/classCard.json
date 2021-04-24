@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-grid": "/node-modules/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/node-modules/uview-ui/components/u-grid-item/u-grid-item",
+    "cmd-progress": "/components/cmd-progress/cmd-progress",
+    "u-badge": "/node-modules/uview-ui/components/u-badge/u-badge"
+  }
+}

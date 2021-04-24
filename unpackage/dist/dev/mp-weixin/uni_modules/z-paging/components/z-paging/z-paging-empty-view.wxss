@@ -1,0 +1,39 @@
+
+.zp-container.data-v-da41359e {
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+
+
+
+
+
+
+
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.zp-main.data-v-da41359e {
+	z-index: 1000;
+}
+.zp-main-image.data-v-da41359e {
+	margin-top: -200rpx;
+	width: 200rpx;
+	height: 200rpx;
+}
+.zp-mian-title.data-v-da41359e {
+	font-size: 26rpx;
+	color: #aaaaaa;
+	text-align: center;
+}
+

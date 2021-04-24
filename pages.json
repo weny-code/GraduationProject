@@ -1,0 +1,253 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				// "navigationStyle": "custom" ,// 隐藏系统导航栏
+				// "navigationBarTitleText": "班级小管家"
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "班级小管家",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/home/home",
+			"style": {
+				// "navigationBarTitleText": "",
+				// "enablePullDownRefresh": true
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTextStyle": "black" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
+			}
+		}, {
+			"path": "pages/addressBook/addressBook",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/extend/extend",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/myCenter/myCenter",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/release/release",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+
+	"subPackages": [{
+			"root": "packageB",
+			"pages": [{
+					"path": "pages/createClass/createClass",
+					"style": {
+						"navigationBarTitleText": "创建班级",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/upLoadFile/upLoadFile",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/joinClass/joinClass",
+					"style": {
+						"navigationBarTitleText": "加入班级",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/quitClass/quitClass",
+					"style": {
+						"navigationBarTitleText": "邑班之助",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/deleteClass/deleteClass",
+					"style": {
+						"navigationBarTitleText": "邑班之助",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/publishNotice/publishNotice",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/noticeDetails/noticeDetails",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/publishClock/publishClock",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "pages/applyLeave/applyLeave",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/handleApply/handleApply",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/fileList/fileList",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		},
+		{
+			"root": "packageC",
+			"pages": [{
+					"path": "pages/fillInfo/fillInfo",
+					"style": {
+						"navigationBarTitleText": "完善身份信息",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/chooseRole/chooseRole",
+					"style": {
+						"navigationBarTitleText": "选择班级内角色",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/confirmedList/confirmedList",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/chooseClass/chooseClass",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/leaveList/leaveList",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "pages/leaveDetail/leaveDetail",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		}
+	],
+	"preloadRule": {
+		"pages/index/index": {
+			"network": "all",
+			"packages": ["packageB"]
+		},
+		"pages/home/home": {
+			"network": "all",
+			"packages": ["packageC"]
+		}
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#F7F8FA"
+	},
+	"tabBar": {
+		"color": "#909399",
+		"selectedColor": "#303133",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/icon/home.png",
+				"selectedIconPath": "static/icon/home_select.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/addressBook/addressBook",
+				"iconPath": "static/icon/addressBook.png",
+				"selectedIconPath": "static/icon/addressBook_select.png",
+				"text": "通讯录"
+			},
+			{
+				"pagePath": "pages/release/release",
+				"iconPath": "static/icon/min_button_select.png",
+				"selectedIconPath": "static/icon/min_button_select.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/extend/extend",
+				"iconPath": "static/icon/extend.png",
+				"selectedIconPath": "static/icon/extend_select.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/myCenter/myCenter",
+				"iconPath": "static/icon/myCenter.png",
+				"selectedIconPath": "static/icon/myCenter_select.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}

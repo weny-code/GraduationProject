@@ -1,0 +1,1 @@
+<view><view class="title">{{''+confirmInfo.length+'人选择了此项'}}</view><block wx:for="{{confirmInfo}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="confirm-list"><u-avatar vue-id="{{'3d97c96a-1-'+index}}" size="80" src="{{item.avatar}}" bind:__l="__l"></u-avatar><view class="name">{{''+item.name+''}}</view></view></block></view>
