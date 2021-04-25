@@ -22,7 +22,10 @@
         "pages/publishClock/publishClock",
         "pages/applyLeave/applyLeave",
         "pages/handleApply/handleApply",
-        "pages/fileList/fileList"
+        "pages/fileList/fileList",
+        "classHome/classHome",
+        "personalInfo/personalInfo",
+        "editMember/editMember"
       ]
     },
     {
@@ -95,6 +98,5 @@
       ]
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

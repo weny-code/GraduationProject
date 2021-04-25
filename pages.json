@@ -139,8 +139,33 @@
 						"navigationBarTitleText": "",
 						"enablePullDownRefresh": false
 					}
+				}, {
+					"path": "classHome/classHome",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+
 				}
-			]
+			    ,{
+                    "path" : "personalInfo/personalInfo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "editMember/editMember",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 		},
 		{
 			"root": "packageC",

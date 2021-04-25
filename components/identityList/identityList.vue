@@ -76,7 +76,7 @@
 						if (this.userInfo.joined_class[i].class_role == '老师') {
 							console.log("老师")
 							this.isTeacher = true
-							this.teacherName = this.userInfo.nickname
+							this.teacherName = this.userInfo.username
 							break
 						}else{
 							this.isTeacher = false

@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
 		class_members: dbCmd.push([{
 			members_id: event.id,
 			mobile:event.mobile,
-			username:event.name,
+			username:event.username,
 			class_role: event.role
 		}])
 	})

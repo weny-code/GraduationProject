@@ -4,7 +4,7 @@
 			<view v-if="item.data" v-for="(item, index) in list" :key="index">
 				<u-index-anchor :index="item.letter" />
 				<view @click="makePhone(item1.mobile)" class="list-cell u-border-bottom" v-for="(item1, index_) in list[index].data" :key="index_">
-					{{item1.name}}
+					{{item1.username}}
 				</view>
 			</view>
 		</u-index-list>
@@ -23,120 +23,13 @@
 				data:"",
 				scrollTop: 0,
 				indexList:[],
-				list:[
-					{
-					"letter":"A",
-					data:[]
-				},
-				{
-					"letter":"B",
-					data:[]
-				},
-				{
-					"letter":"C",
-					data:[]
-				},
-				{
-					"letter":"D",
-					data:[]
-				},
-				{
-					"letter":"E",
-					data:[]
-				},
-				{
-					"letter":"F",
-					data:[]
-				},
-				{
-					"letter":"G",
-					data:[]
-				},
-				{
-					"letter":"H",
-					data:[]
-				},
-				{
-					"letter":"I",
-					data:[]
-				},
-				{
-					"letter":"J",
-					data:[]
-				},
-				{
-					"letter":"K",
-					data:[]
-				},
-				{
-					"letter":"L",
-					data:[]
-				},
-				{
-					"letter":"M",
-					data:[]
-				},
-				{
-					"letter":"N",
-					data:[]
-				},
-				{
-					"letter":"O",
-					data:[]
-				},
-				{
-					"letter":"P",
-					data:[]
-				},
-				{
-					"letter":"Q",
-					data:[]
-				},
-				{
-					"letter":"R",
-					data:[]
-				},
-				{
-					"letter":"S",
-					data:[]
-				},
-				{
-					"letter":"T",
-					data:[]
-				},
-				{
-					"letter":"U",
-					data:[]
-				},
-				{
-					"letter":"V",
-					data:[]
-				},
-				{
-					"letter":"W",
-					data:[]
-				},
-				{
-					"letter":"X",
-					data:[]
-				},
-				{
-					"letter":"Y",
-					data:[]
-				},
-				{
-					"letter":"Z",
-					data:[]
-				}]
+				list:[]
 			}	
 		},
 		computed: {
 			...mapState(['uid', 'currentRoleClassList', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth', 'tabbar'])
 		},
 		onLoad() {
-			this.indexList = this.list.map(val => {
-		return val.letter;
-	})
 			this.getMembersList()
 			console.log(this.data)
 		},
@@ -161,21 +54,39 @@
 					var pattern = new RegExp("[\u4E00-\u9FA5]+");
 					var pattern2 = new RegExp("[A-Za-z]+");
 					for(let item of res.result.data[0].class_members){
-						if(pattern.test(item.name)){
-							console.log("中文：",item.name)
-							this.data = this.$pinyin(item.name, { pattern: 'initial' }).toUpperCase().replace(/\s*/g, '')
+						if(pattern.test(item.username)){
+							console.log("中文：",item.username)
+							this.data = this.$pinyin(item.username, { pattern: 'initial' }).toUpperCase().replace(/\s*/g, '')
 							console.log(this.data)
-							this.list[(this.list.findIndex(item => item.letter == this.data[0]))].data.push(item)
+							if(this.list.findIndex(item=>item.letter==this.data[0]==-1)){
+								this.list.push({
+									letter:this.data[0],
+									data:[item]
+								})
+							}else{
+								this.list[(this.list.findIndex(item => item.letter == this.data[0]))].data.push(item)
+							}
 							console.log(this.list)
 						} 
-						if(pattern2.test(item.name)){
-							console.log("英文：",item.name)
-							this.data = item.name
-							this.list[(this.list.findIndex(item => item.letter == this.data[0]))].data.push(item)
+						if(pattern2.test(item.username)){
+							console.log("英文：",item.username)
+							this.data = item.username
+							if(this.list.findIndex(item=>item.letter==this.data[0]==-1)){
+								this.list.push({
+									letter:this.data[0],
+									data:[item]
+								})
+							}else{
+								this.list[(this.list.findIndex(item => item.letter == this.data[0]))].data.push(item)
+							}
 							console.log(this.list)
 						}
 					}
 				}))
+				this.indexList = this.list.map(val => {
+					return val.letter;
+				})
+				console.log("indexList：",this.indexList)
 			}
 		}
 	}

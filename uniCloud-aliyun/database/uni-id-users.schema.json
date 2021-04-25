@@ -52,9 +52,9 @@
 			"title": "个人信息",
 			"description": "用户个人信息",
 			"properties": {
-				"telephone": {
+				"stu_num":{
 					"bsonType": "string",
-					"description": "联系电话"
+					"description": "学生学号"
 				},
 				"college": {
 					"bsonType": "string",

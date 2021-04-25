@@ -167,7 +167,8 @@
 			goClassHome() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url: '../../packageB/pages/quitClass/quitClass?params=' + params,
+					url:'../../packageB/classHome/classHome?params='+params,
+					// url: '../../packageB/pages/quitClass/quitClass?params=' + params,
 					success() {
 						console.log("跳转成功")
 					},
@@ -198,7 +199,8 @@
 			goAdminClassHome() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url: '../../packageB/pages/deleteClass/deleteClass?params=' + params,
+					// url: '../../packageB/pages/deleteClass/deleteClass?params=' + params,
+					url:'../../packageB/classHome/classHome?params='+params,
 					success() {
 						console.log("跳转成功")
 					},
