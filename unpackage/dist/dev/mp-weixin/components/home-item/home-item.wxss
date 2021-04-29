@@ -24,10 +24,10 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.hover {
+.hover.data-v-17f1ecf0 {
   background: #f1f1f1;
 }
-.flex {
+.flex.data-v-17f1ecf0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -40,7 +40,7 @@
 }
 /* 注意，1、父节点需要固定高度，z-paging的height:100%才会生效 */
 /* 注意，2、请确保z-paging与同级的其他view的总高度不得超过屏幕宽度，以避免超出屏幕高度时页面的滚动与z-paging内部的滚动冲突 */
-.content {
+.content.data-v-17f1ecf0 {
   height: 100%;
   /* 父节点建议开启flex布局 */
   display: -webkit-box;
@@ -51,7 +51,7 @@
   -webkit-flex-direction: column;
           flex-direction: column;
 }
-.loading {
+.loading.data-v-17f1ecf0 {
   position: fixed;
   display: -webkit-box;
   display: -webkit-flex;
@@ -73,7 +73,7 @@
   background: #040038;
   z-index: 999;
 }
-.class-operation {
+.class-operation.data-v-17f1ecf0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -91,7 +91,7 @@
   box-sizing: border-box;
   padding: 10rpx;
 }
-.class-operation .card {
+.class-operation .card.data-v-17f1ecf0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -104,19 +104,19 @@
   padding: 20rpx;
   width: 50%;
 }
-.class-operation .card .operation .name {
+.class-operation .card .operation .name.data-v-17f1ecf0 {
   margin-left: 0;
   font-size: 36rpx;
   padding: 10rpx 10rpx 0 0rpx;
   font-weight: bold;
 }
-.class-operation .card .operation .desc {
+.class-operation .card .operation .desc.data-v-17f1ecf0 {
   color: #9f9f9f;
   font-size: 24rpx;
   margin-top: 20rpx;
   padding: 0 10rpx 10rpx 0rpx;
 }
-.select {
+.select.data-v-17f1ecf0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -128,5 +128,33 @@
           align-items: center;
   width: 380rpx;
   margin: 20rpx auto;
+}
+.sub.data-v-17f1ecf0 {
+  width: 300rpx;
+}
+.pop.data-v-17f1ecf0 {
+  padding: 10rpx 20rpx;
+  height: 600rpx;
+}
+.btn.data-v-17f1ecf0 {
+  color: #333;
+  font-size: 18px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.btn .pop-btn.data-v-17f1ecf0 {
+  width: 50%;
+  padding: 20rpx 40rpx;
 }
 

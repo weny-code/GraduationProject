@@ -18,23 +18,11 @@ export default new Vuex.Store({
 				pagePath: "/pages/home/home"
 			},
 			{
-				pagePath: "/pages/addressBook/addressBook",
-				iconPath: "/static/icon/addressBook.png",
-				selectedIconPath: "/static/icon/addressBook_select.png",
-				text: '通讯录',
-			},
-			{
 				pagePath: "/pages/release/release",
 				iconPath: "/static/icon/min_button_select.png",
 				selectedIconPath: "/static/icon/min_button_select.png",
 				text: '',
 				midButton: true,
-			},
-			{
-				pagePath: "/pages/extend/extend",
-				iconPath: "/static/icon/extend.png",
-				selectedIconPath: "/static/icon/extend_select.png",
-				text: '发现',
 			},
 			{
 				pagePath: "/pages/myCenter/myCenter",

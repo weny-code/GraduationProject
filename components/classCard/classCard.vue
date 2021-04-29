@@ -65,7 +65,7 @@
 					<u-icon custom-prefix="custom-icon" name="qingjiashenhe" :size="60"></u-icon>
 					<view class="grid-text">请假审批</view>
 				</u-grid-item>
-				<u-grid-item :custom-style="customStyle">
+				<u-grid-item @click="goExpense" :custom-style="customStyle">
 					<u-icon custom-prefix="custom-icon" name="feiyongguanli" :size="60"></u-icon>
 					<view class="grid-text">班费查看</view>
 				</u-grid-item>
@@ -134,6 +134,21 @@
 						console.log(e);
 					}
 				});
+			},
+			goExpense(){
+				var params = encodeURIComponent(JSON.stringify(this.classList))
+				uni.navigateTo({
+					url: '../../packageC/classExpense/classExpense?params='+params,
+					success() {
+						console.log("跳转成功")
+					},
+					fail() {
+						console.log("跳转失败")
+					},
+					complete() {
+						console.log("跳转完成")
+					}
+				})
 			},
 			showLeave() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
@@ -240,14 +255,8 @@
 				return count
 			},
 			async loadClass() {
-				// this.classList.id = this.classList._id
-				// this.classList.className = this.classList.class_name
-				// this.classList.classSize = this.classList.class_size
-				// this.classList.code = this.classList._id
-				// this.classList.headImg = this.headImg
 				this.classList.joined = await this.getStuCount(this.classList._id)
 				this.classList.noJoin = this.classList.class_size - this.classList.joined
-				// this.classIdList.push(item._id)
 			}
 		},
 		mounted() {

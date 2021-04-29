@@ -14,7 +14,7 @@
 		}, {
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "班级小管家",
+				"navigationBarTitleText": "邑班之助",
 				"enablePullDownRefresh": false
 			}
 		},
@@ -25,18 +25,6 @@
 				// "enablePullDownRefresh": true
 				"navigationStyle": "custom", // 隐藏系统导航栏
 				"navigationBarTextStyle": "black" // 状态栏字体为白色，只能为 white-白色，black-黑色 二选一
-			}
-		}, {
-			"path": "pages/addressBook/addressBook",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "pages/extend/extend",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "pages/myCenter/myCenter",
@@ -211,7 +199,16 @@
 						"enablePullDownRefresh": false
 					}
 				}
-			]
+			    ,{
+                    "path" : "classExpense/classExpense",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 		}
 	],
 	"preloadRule": {
@@ -242,22 +239,10 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/addressBook/addressBook",
-				"iconPath": "static/icon/addressBook.png",
-				"selectedIconPath": "static/icon/addressBook_select.png",
-				"text": "通讯录"
-			},
-			{
 				"pagePath": "pages/release/release",
 				"iconPath": "static/icon/min_button_select.png",
 				"selectedIconPath": "static/icon/min_button_select.png",
 				"text": ""
-			},
-			{
-				"pagePath": "pages/extend/extend",
-				"iconPath": "static/icon/extend.png",
-				"selectedIconPath": "static/icon/extend_select.png",
-				"text": "发现"
 			},
 			{
 				"pagePath": "pages/myCenter/myCenter",

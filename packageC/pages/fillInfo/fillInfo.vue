@@ -17,8 +17,7 @@
 					<text>{{role}}姓名</text>
 				</view>
 				<view class="">
-					<u-input placeholder="请填写姓名" :clearable="false" v-model="name" type="text"
-						:border="false" />
+					<u-input placeholder="请填写姓名" :clearable="false" v-model="name" type="text" :border="false" />
 				</view>
 			</view>
 			<u-line color="info"></u-line>
@@ -27,8 +26,7 @@
 					<text>手机号码</text>
 				</view>
 				<view class="">
-					<u-input placeholder="请填写手机号码" :clearable="false" v-model="mobile" type="number"
-						:border="false" />
+					<u-input placeholder="请填写手机号码" :clearable="false" v-model="mobile" type="number" :border="false" />
 				</view>
 			</view>
 		</view>
@@ -52,31 +50,31 @@
 				name: "",
 				mobile: "",
 				classInfo: "",
-				role:"",
-				show:false,
-				content:"加入失败！"
+				role: "",
+				show: false,
+				content: "加入失败！"
 			};
 		},
 		onLoad(option) {
 			this.classInfo = JSON.parse(decodeURIComponent(option.params))
-			this.role =  JSON.parse(decodeURIComponent(option.role))
+			this.role = JSON.parse(decodeURIComponent(option.role))
 			console.log(this.classInfo)
-			this.name = this.userInfo.nickname	
+			this.name = this.userInfo.nickname
 		},
 		computed: {
 			...mapState(['uid', 'hasLogin', 'userInfo', 'hasAuth', 'tabbar'])
 		},
 		methods: {
-			...mapMutations(["setID","login", "logout","getAuth"]),
-			backToIndex(){
+			...mapMutations(["setID", "login", "logout", "getAuth"]),
+			backToIndex() {
 				uni.reLaunch({
-				    url: '../../../pages/index/index'
+					url: '../../../pages/index/index'
 				});
 			},
 			submit() {
 				if (this.$u.test.isEmpty(this.name)) {
 					this.showToast("班级名称不能为空");
-				}else if (!this.$u.test.mobile(this.mobile)) {
+				} else if (!this.$u.test.mobile(this.mobile)) {
 					this.showToast("手机号码格式错误");
 				} else {
 					this.getStuCount();
@@ -87,20 +85,20 @@
 					title: title,
 				})
 			},
-			async getStuCount(){
+			async getStuCount() {
 				const db = uniCloud.database()
 				await db.collection('class-list').where({
-					'class_members._id':this.classInfo._id,
-					'class_members.class_role':this.role
+					'class_members._id': this.classInfo._id,
+					'class_members.class_role': this.role
 				}).get({
-					getCount:true
-				}).then((res=>{
+					getCount: true
+				}).then((res => {
 					console.log(res)
-					if(res.result.count < this.classInfo.class_size){
+					if (res.result.count < this.classInfo.class_size) {
 						this.saveInfo()
-					}else{
+					} else {
 						this.show = true
-						this.content='该班级人数已满！'
+						this.content = '该班级人数已满！'
 					}
 				}))
 			},
@@ -118,12 +116,17 @@
 					.then(res => {
 						console.log(res)
 					});
+				await db.collection('uni-id-users').where({
+					_id: this.uid
+				}).update({
+					username: this.name
+				})
 				await uniCloud.callFunction({
 						name: 'joined-update-push',
 						data: {
 							id: this.uid,
 							class_id: this.classInfo._id,
-							role:this.role
+							role: this.role
 						}
 					})
 					.then(res => {

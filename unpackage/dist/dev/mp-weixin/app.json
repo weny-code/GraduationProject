@@ -3,8 +3,6 @@
     "pages/index/index",
     "pages/login/login",
     "pages/home/home",
-    "pages/addressBook/addressBook",
-    "pages/extend/extend",
     "pages/myCenter/myCenter",
     "pages/release/release"
   ],
@@ -36,7 +34,8 @@
         "pages/confirmedList/confirmedList",
         "pages/chooseClass/chooseClass",
         "pages/leaveList/leaveList",
-        "pages/leaveDetail/leaveDetail"
+        "pages/leaveDetail/leaveDetail",
+        "classExpense/classExpense"
       ]
     }
   ],
@@ -59,22 +58,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/addressBook/addressBook",
-        "iconPath": "static/icon/addressBook.png",
-        "selectedIconPath": "static/icon/addressBook_select.png",
-        "text": "通讯录"
-      },
-      {
         "pagePath": "pages/release/release",
         "iconPath": "static/icon/min_button_select.png",
         "selectedIconPath": "static/icon/min_button_select.png",
         "text": ""
-      },
-      {
-        "pagePath": "pages/extend/extend",
-        "iconPath": "static/icon/extend.png",
-        "selectedIconPath": "static/icon/extend_select.png",
-        "text": "发现"
       },
       {
         "pagePath": "pages/myCenter/myCenter",
@@ -98,5 +85,6 @@
       ]
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

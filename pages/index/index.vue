@@ -1,10 +1,10 @@
 <template>
 	<view>
-		<u-mask :show="show" :mask-click-able="false">
+		<!-- <u-mask :show="show" :mask-click-able="false"> -->
 			<view v-if="show" class="loading">
 				<Loading text="加载中.." :mask="true" click="true" ref="loading"></Loading>
 			</view>
-		</u-mask>
+		<!-- </u-mask> -->
 		<u-navbar :border-bottom="false" :is-back="false">
 			<view class="slot-wrap">
 				<view hover-class="hover" style="border-radius: 50%">
@@ -278,6 +278,8 @@
 							this.hasRole = false
 							this.show = false
 						}
+					}else{
+						this.show=false
 					}
 				})
 			},

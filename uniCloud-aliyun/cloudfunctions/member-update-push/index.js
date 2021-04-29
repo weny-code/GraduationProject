@@ -9,7 +9,8 @@ exports.main = async (event, context) => {
 			members_id: event.id,
 			mobile:event.mobile,
 			username:event.username,
-			class_role: event.role
+			class_role: event.role,
+			isCadres:event.isCadres
 		}])
 	})
 	//返回数据给客户端

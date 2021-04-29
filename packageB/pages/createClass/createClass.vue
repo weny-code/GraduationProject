@@ -83,13 +83,8 @@
 						}]
 					})
 					.then((res) => {
-						uni.showToast({
-							title: '创建成功！'
-						})
 						console.log(res)
 						this.classID = res.result.id
-						this.show = true
-						this.content = "班级通讯录发生改变，请返回首页重新进入！"
 					})
 					.catch((err) => {
 						uni.showModal({
@@ -100,6 +95,20 @@
 					.finally(() => {
 
 					})
+				await db.collection('class-expense')
+				.add({
+					class_id:this.classID,
+					total_price:"0",
+					revenue_record:[],
+					expend_record:[]
+				}).then((res=>{
+					uni.showToast({
+						title: '创建成功！'
+					})
+					console.log(res)
+					this.show = true
+					this.content = "班级通讯录发生改变，请返回首页重新进入！"
+				}))
 				const dbCmd = db.command
 				uniCloud.callFunction({
 						name: 'joined-update-push',

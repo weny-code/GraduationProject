@@ -1,5 +1,23 @@
 <template>
 	<view class="content">
+		<u-popup v-model="popShow" mode="top">
+			<view class="pop">
+				<view style="font-size: 18px;font-weight: bold;margin: 20rpx;">
+					类型
+				</view>
+				<view style="margin-bottom: 40rpx;">
+					<helang-checkbox ref="checkbox"></helang-checkbox>
+				</view>
+				<view class="btn">
+					<view @click="popShow=false" class="pop-btn">
+						取消
+					</view>
+					<view @click="popSelect" class="pop-btn" style="background: #007AFF;color: #fff;">
+						确定
+					</view>
+				</view>
+			</view>
+		</u-popup>
 		<u-mask :show="show" :mask-click-able="false">
 			<view v-if="show" class="loading">
 				<Loading text="加载中.." :mask="true" click="true" ref="loading"></Loading>
@@ -17,14 +35,14 @@
 			<custom-nomore slot="loadingMoreNoMore"></custom-nomore>
 			<!-- 如果希望其他view跟着页面滚动，可以放在z-paging标签内 -->
 			<!-- list数据，建议像下方这样在item外层套一个view，而非直接for循环item，因为slot插入有数量限制 -->
-			<view v-show="tabIndex==1" class="select">
+			<view v-if="tabIndex===1" class="select">
 				<view class="sub">
-					<u-subsection button-color="#e1e1e1" bg-color="#fff" :list="chooseList" :current="0">
+					<u-subsection :current="curNow" @change="sectionChange" button-color="#e1e1e1" bg-color="#fff" :list="chooseList">
 					</u-subsection>
 				</view>
-				<u-icon name="choose" custom-prefix="custom-icon" size="50"></u-icon>
+				<u-icon @click="popShow=true" name="choose" custom-prefix="custom-icon" size="50"></u-icon>
 			</view>
-			<view v-show="tabIndex==0" class="class-operation">
+			<view v-if="tabIndex===0" class="class-operation">
 				<view hover-class="hover" class="card" @click="goCreateClass">
 					<view class="operation">
 						<view class="name">
@@ -47,7 +65,6 @@
 						</view>
 					</view>
 					<u-avatar mode="square" src="/static/img/join.png"></u-avatar>
-
 				</view>
 			</view>
 			<view>
@@ -69,11 +86,12 @@
 		mapState,
 		mapMutations
 	} from 'vuex'
-	import customNomore from "../custom-nomore/custom-nomore.vue"
-	import Loading from "../loading.vue";
-	import classCard from "../classCard/classCard.vue";
-	import noticeCard from "../noticeCard/noticeCard.vue"
-	import customRefresher from "../custom-refresher/custom-refresher.vue"
+	import customNomore from "@/components/custom-nomore/custom-nomore.vue"
+	import Loading from "@/components/loading.vue";
+	import classCard from "@/components/classCard/classCard.vue";
+	import noticeCard from "@/components/noticeCard/noticeCard.vue"
+	import customRefresher from "@/components/custom-refresher/custom-refresher.vue"
+	import helangCheckbox from "@/components/helang-checkbox/helang-checkbox.vue"
 	export default {
 		name: "home-item",
 		components: {
@@ -81,17 +99,21 @@
 			customRefresher,
 			Loading,
 			classCard,
-			noticeCard
+			noticeCard,
+			helangCheckbox
 		},
 		data() {
 			return {
 				dataList: [],
 				tempList: [],
+				curType:'全部',
+				curNow: 0,
 				firstLoaded: false,
 				customStyle: {
 					padding: '10rpx 16rpx',
 					fontSize: '14px'
 				},
+				popShow:false,
 				refresherStatus: 0,
 				show: true,
 				chooseList: [{
@@ -139,9 +161,36 @@
 		},
 		mounted() {
 			this.headImg = uni.getStorageSync('userInfo').avatar
+			this.$nextTick(()=>{
+			        this.$refs.checkbox.set({
+			            //这里填写插件所需参数
+						 type:'radio',   // 类型：单选框
+						    index:0,        // 默认选中的项
+						    column:3,       // 分列
+						    list:[          // 列表数据
+						        {text:'全部'},
+						        {text:'通知'},
+						        {text:'打卡'},
+						        {text:'填表'}
+						    ]   
+			        })
+			    })
 		},
 		methods: {
 			...mapMutations(['setClassList']),
+			sectionChange(index) {
+				if(this.curNow!=index){
+					this.curNow = index;
+					this.$refs.paging.reload();
+				}
+			},
+			popSelect(){
+				let data = this.$refs.checkbox.get();
+				console.log(data);
+				this.curType=data.text
+				this.$refs.paging.reload();
+				this.popShow=false
+			},
 			async queryList(pageNo, pageSize) {
 				// 组件加载时会自动触发此方法，因此默认页面加载时会自动触发，无需手动调用
 				// 这里的pageNo和pageSize会自动计算好，直接传给服务器即可
@@ -182,41 +231,114 @@
 						classIdList.push(item._id)
 					}
 					console.log("classIdList:", classIdList)
-					await db.collection('class-notice,class-list,uni-id-users')
-						.where({
-							'class_id._id': dbCmd.in(classIdList)
-						})
-						.field(
-							'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
-						)
-						.skip(pageNo * pageSize) // 跳过前20条
-						.limit(pageSize) // 获取20条
-						.orderBy('release_time desc')
-						.get({
-							getCount: true
-						}).then((res) => {
-							console.log("noticeList：", res.result.data)
-							this.tempList = res.result.data
-						}).catch((err) => {
-							console.log(err)
-						})
+					if(this.curNow==0){
+						if(this.curType=='全部'){
+							console.log("全部：",this.curType)
+							await db.collection('class-notice,class-list,uni-id-users')
+								.where({
+									'class_id._id': dbCmd.in(classIdList)
+								})
+								.field(
+									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+								)
+								.skip(pageNo * pageSize) // 跳过前20条
+								.limit(pageSize) // 获取20条
+								.orderBy('release_time desc')
+								.get({
+									getCount: true
+								}).then((res) => {
+									console.log("noticeList：", res.result.data)
+									this.tempList = res.result.data
+								}).catch((err) => {
+									console.log(err)
+								})
+						}else{
+							console.log( "非全部：",this.curType)
+							await db.collection('class-notice,class-list,uni-id-users')
+								.where({
+									'class_id._id': dbCmd.in(classIdList),
+									type:this.curType
+								})
+								.field(
+									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+								)
+								.skip(pageNo * pageSize) // 跳过前20条
+								.limit(pageSize) // 获取20条
+								.orderBy('release_time desc')
+								.get({
+									getCount: true
+								}).then((res) => {
+									console.log("noticeList：", res.result.data)
+									this.tempList = res.result.data
+								}).catch((err) => {
+									console.log(err)
+								})
+						}
+					}else{
+						if(this.curType=='全部'){
+							console.log("全部：",this.curType)
+							await db.collection('class-notice,class-list,uni-id-users')
+								.where({
+									'class_id._id': dbCmd.in(classIdList),
+									'publisher_id._id':this.uid
+								})
+								.field(
+									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+								)
+								.skip(pageNo * pageSize) // 跳过前20条
+								.limit(pageSize) // 获取20条
+								.orderBy('release_time desc')
+								.get({
+									getCount: true
+								}).then((res) => {
+									console.log("noticeList：", res.result.data)
+									this.tempList = res.result.data
+								}).catch((err) => {
+									console.log(err)
+								})
+						}else{
+							console.log( "非全部：",this.curType)
+							await db.collection('class-notice,class-list,uni-id-users')
+								.where({
+									'class_id._id': dbCmd.in(classIdList),
+									type:this.curType,
+									'publisher_id._id':this.uid
+								})
+								.field(
+									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+								)
+								.skip(pageNo * pageSize) // 跳过前20条
+								.limit(pageSize) // 获取20条
+								.orderBy('release_time desc')
+								.get({
+									getCount: true
+								}).then((res) => {
+									console.log("noticeList：", res.result.data)
+									this.tempList = res.result.data
+								}).catch((err) => {
+									console.log(err)
+								})
+						}
+					}
 					for (let i = 0; i < this.tempList.length; i++) {
 						for (let j = 0; j < this.tempList[i].class_id.length; j++) {
-							tempNotice.push({
-								_id: this.tempList[i]._id,
-								type: this.tempList[i].type,
-								title: this.tempList[i].title,
-								content: this.tempList[i].content,
-								publisher: this.tempList[i].publisher_id[0].nickname,
-								publisherId: this.tempList[i].publisher_id[0]._id,
-								release_time: this.tempList[i].release_time,
-								confirmed: this.tempList[i].confirmed,
-								file_list: this.tempList[i].file_list,
-								class_id: this.tempList[i].class_id[j]._id,
-								class_name: this.tempList[i].class_id[j].class_name,
-								class_size: this.tempList[i].class_id[j].class_size,
-								form_item: this.tempList[i].form_item
-							})
+							if(classIdList.indexOf(this.tempList[i].class_id[j]._id) > -1){
+								tempNotice.push({
+									_id: this.tempList[i]._id,
+									type: this.tempList[i].type,
+									title: this.tempList[i].title,
+									content: this.tempList[i].content,
+									publisher: this.tempList[i].publisher_id[0].nickname,
+									publisherId: this.tempList[i].publisher_id[0]._id,
+									release_time: this.tempList[i].release_time,
+									confirmed: this.tempList[i].confirmed,
+									file_list: this.tempList[i].file_list,
+									class_id: this.tempList[i].class_id[j]._id,
+									class_name: this.tempList[i].class_id[j].class_name,
+									class_size: this.tempList[i].class_id[j].class_size,
+									form_item: this.tempList[i].form_item
+								})
+							}
 						}
 					}
 					console.log("noticeList等于", tempNotice)
@@ -272,7 +394,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.flex {
 		display: flex;
 		justify-content: flex-start;
@@ -352,5 +474,28 @@
 		align-items: center;
 		width: 380rpx;
 		margin: 20rpx auto;
+	}
+
+	.sub {
+		width: 300rpx;
+	}
+	.pop{
+		padding: 10rpx 20rpx;
+		height: 600rpx;
+	}
+	.btn{
+		color: #333;
+		font-size: 18px;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.pop-btn{
+			width: 50%;
+			padding: 20rpx 40rpx;
+		}
 	}
 </style>
