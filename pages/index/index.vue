@@ -107,10 +107,10 @@
 			var _this = this
 			uni.$once('login', function(data) {
 				console.log('监听到事件来自 login ，携带参数 msg 为：' + data.msg);
-				_this.getUserInfo()
+				_this.getInfo()
 			})
 			// this.show=false
-			this.getUserInfo()
+			this.getInfo()
 		},
 		computed: {
 			...mapState(['uid', 'hasLogin', 'userInfo', 'hasAuth'])
@@ -193,7 +193,7 @@
 						gender: res.userInfo.gender
 					})
 					.then((res => {
-						this.getUserInfo()
+						this.getInfo()
 					}))
 					.catch((err) => {
 						console.log(err.code); // 打印错误码
@@ -239,7 +239,7 @@
 					}
 				})
 			},
-			async getUserInfo() {
+			async getInfo() {
 				console.log("正在执行getUserInfo")
 				const db = uniCloud.database()
 				await db.collection('uni-id-users').where('_id == $cloudEnv_uid').field(

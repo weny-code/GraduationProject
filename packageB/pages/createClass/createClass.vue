@@ -79,7 +79,8 @@
 							members_id: this.uid,
 							mobile: this.creatorMobile,
 							username:this.userInfo.username,
-							class_role: "老师"
+							class_role: "老师",
+							isCadres:false
 						}]
 					})
 					.then((res) => {

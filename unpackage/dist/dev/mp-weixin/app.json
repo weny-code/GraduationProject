@@ -35,7 +35,8 @@
         "pages/chooseClass/chooseClass",
         "pages/leaveList/leaveList",
         "pages/leaveDetail/leaveDetail",
-        "classExpense/classExpense"
+        "classExpense/classExpense",
+        "academicInfo/academicInfo"
       ]
     }
   ],

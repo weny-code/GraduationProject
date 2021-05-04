@@ -14,8 +14,9 @@
 				<view class="upload-desc">
 					选择图片
 				</view>
-				<uni-file-picker ref="Imgfiles" v-model="imageValue" fileMediatype="image" mode="grid" @select="selectImg"
-					@progress="progress" :auto-upload="true" :image-styles="imgStyle" @success="successImg" @fail="fail">
+				<uni-file-picker ref="Imgfiles" v-model="imageValue" fileMediatype="image" mode="grid"
+					@select="selectImg" @progress="progress" :auto-upload="true" :image-styles="imgStyle"
+					@success="successImg" @fail="fail">
 					<view class="up-img">
 						<u-icon custom-prefix="custom-icon" name="tianjiatupian" :size="100"></u-icon>
 					</view>
@@ -70,67 +71,77 @@
 			return {
 				noticeTitle: '',
 				noticeContent: '',
-				fileList:[],
+				fileList: [],
 				tempList: [],
 				classList: [],
-				chooseClass:[],
-				upLoadImgsuccess:false,
-				upLoadFilesuccess:false,
-				show:false,
-				content:"",
-				noticeId:"",
-				imgStyle:{
-				    "height": "200rpx",   // 边框高度
-				    "width": "200rpx",    // 边框宽度
-				    "border":false,
+				chooseClass: [],
+				upLoadImgsuccess: false,
+				upLoadFilesuccess: false,
+				show: false,
+				content: "",
+				noticeId: "",
+				imgStyle: {
+					"height": "200rpx", // 边框高度
+					"width": "200rpx", // 边框宽度
+					"border": false,
 				},
-				listStyle:{
-				    "borderStyle":{
-				        "color":"#eee",     // 边框颜色
-				        "width":"1px",      // 边框宽度
-				        "style":"solid",    // 边框样式
-				        "radius":"5px"      // 边框圆角，不支持百分比
-				    },
-					"padding":"10rpx 20rpx",
-				    "border":true, // 是否显示边框
-				    "dividline":true // 是否显示分隔线
+				listStyle: {
+					"borderStyle": {
+						"color": "#eee", // 边框颜色
+						"width": "1px", // 边框宽度
+						"style": "solid", // 边框样式
+						"radius": "5px" // 边框圆角，不支持百分比
+					},
+					"padding": "10rpx 20rpx",
+					"border": true, // 是否显示边框
+					"dividline": true // 是否显示分隔线
 				}
 			};
 		},
-		computed:{
-			...mapState(['uid', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth']),
+		computed: {
+			...mapState(['uid', 'currentRoleClassList', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth'])
 		},
 		onLoad() {
-			this.tempList = uni.getStorageSync('currentRoleClassList')
-			for (let item of this.tempList) {
-				this.classList.push({
-					className: item.class_name,
-					classId: item._id,
-					checked: false,
-					disabled: false
+			this.tempList = this.currentRoleClassList
+			if (this.currentRole.classRole == '学生') {
+				this.classList = this.tempList.filter((item) => {
+					for (let j of item.class_members) {
+						if (j.members_id == this.uid) {
+							return j.isCadres
+						}
+					}
 				})
+			} else {
+				for (let item of this.tempList) {
+					this.classList.push({
+						className: item.class_name,
+						classId: item._id,
+						checked: false,
+						disabled: false
+					})
+				}
 			}
 		},
 		methods: {
-			backToIndex(){
+			backToIndex() {
 				uni.reLaunch({
-				    url: '../../../pages/index/index'
+					url: '../../../pages/index/index'
 				});
 			},
-			async publishNotice(){
+			async publishNotice() {
 				var time = new Date().getTime()
 				console.log(this.$u.timeFormat(time, 'yyyy年mm月dd日 hh时MM分ss秒'))
 				const db = uniCloud.database() //代码块为cdb
 				await db.collection("class-notice")
 					.add({
 						type: '通知',
-						title:this.noticeTitle,
+						title: this.noticeTitle,
 						content: this.noticeContent,
 						publisher_id: this.uid,
 						class_id: this.chooseClass,
-						release_time:time,
-						file_list:this.fileList,
-						confirmed:[],
+						release_time: time,
+						file_list: this.fileList,
+						confirmed: [],
 					})
 					.then((res) => {
 						uni.showToast({
@@ -148,32 +159,32 @@
 						})
 					})
 					.finally(() => {
-				
+
 					})
-					for(let item of this.chooseClass){
-						uniCloud.callFunction({
-								name: 'notice-update-push',
-								data: {
-									id: item,
-									notice_id: this.noticeId,
-								}
-							})
-							.then(res => {
-								console.log(res)
-							});
-					}
+				for (let item of this.chooseClass) {
+					uniCloud.callFunction({
+							name: 'notice-update-push',
+							data: {
+								id: item,
+								notice_id: this.noticeId,
+							}
+						})
+						.then(res => {
+							console.log(res)
+						});
+				}
 			},
 			checkboxChange(e) {
 				console.log(e);
-				if(e.value){
-					for(let i of this.classList){
-						if(i.className == e.name){
+				if (e.value) {
+					for (let i of this.classList) {
+						if (i.className == e.name) {
 							this.chooseClass.push(i.classId)
 						}
 					}
-				}else{
-					for(let i of this.classList){
-						if(i.className == e.name){
+				} else {
+					for (let i of this.classList) {
+						if (i.className == e.name) {
 							this.chooseClass.splice(this.chooseClass.findIndex(res => res === i.classId), 1)
 						}
 					}
@@ -212,12 +223,12 @@
 			progress(e) {
 				console.log('上传进度：', e)
 			},
-			
+
 			// 上传成功
 			successImg(e) {
 				// this.upLoadImgsuccess = true
 				console.log('上传成功', e)
-				for(let item of e.tempFiles){
+				for (let item of e.tempFiles) {
 					this.fileList.push(item)
 				}
 				console.log('fileList:', this.fileList)
@@ -228,7 +239,7 @@
 			successFile(e) {
 				// this.upLoadFilesuccess = true
 				console.log('上传成功', e)
-				for(let item of e.tempFiles){
+				for (let item of e.tempFiles) {
 					this.fileList.push(item)
 				}
 				console.log('fileList:', this.fileList)
@@ -265,29 +276,32 @@
 		overflow: hidden;
 		padding: 10rpx 0;
 	}
-	
-	.upLoad{
+
+	.upLoad {
 		margin-left: 10rpx;
 		padding: 10rpx;
-		.upload-desc{
+
+		.upload-desc {
 			font-size: 18px;
 			font-weight: bold;
 			color: #007AFF;
 			padding: 10rpx;
 			margin-bottom: 10rpx;
 		}
-		.up-img{
+
+		.up-img {
 			width: 200rpx;
 			height: 200rpx;
-			background-color:#dfdfdf;
+			background-color: #dfdfdf;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
-		.up-file{
+
+		.up-file {
 			width: 100rpx;
 			height: 100rpx;
-			background-color:#dfdfdf;
+			background-color: #dfdfdf;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -308,8 +322,8 @@
 	.send-class {
 		padding: 10rpx 0rpx;
 	}
-	
-	.box{
+
+	.box {
 		padding: 30rpx 30rpx 10rpx 30rpx;
 	}
 

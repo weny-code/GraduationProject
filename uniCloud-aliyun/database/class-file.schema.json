@@ -27,7 +27,7 @@
 		},
 		"class_id": {
 			"description": "班级ID",
-			"bsonType": "string",
+			"bsonType": "array",
 			"title": "班级ID",
 			"trim": "both",
 			"foreignKey": "class-list._id"

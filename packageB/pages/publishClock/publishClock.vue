@@ -142,17 +142,27 @@
 			};
 		},
 		computed: {
-			...mapState(['uid', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth']),
+			...mapState(['uid', 'currentRoleClassList', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth'])
 		},
 		onLoad() {
-			this.tempList = uni.getStorageSync('currentRoleClassList')
-			for (let item of this.tempList) {
-				this.classList.push({
-					className: item.class_name,
-					classId: item._id,
-					checked: false,
-					disabled: false
+			this.tempList = this.currentRoleClassList
+			if (this.currentRole.classRole == '学生') {
+				this.classList = this.tempList.filter((item) => {
+					for (let j of item.class_members) {
+						if (j.members_id == this.uid) {
+							return j.isCadres
+						}
+					}
 				})
+			} else {
+				for (let item of this.tempList) {
+					this.classList.push({
+						className: item.class_name,
+						classId: item._id,
+						checked: false,
+						disabled: false
+					})
+				}
 			}
 			var _this = this
 			uni.$on('deleteForm', ((data) => {

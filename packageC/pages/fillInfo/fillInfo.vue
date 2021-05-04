@@ -110,17 +110,20 @@
 							class_id: this.classInfo._id,
 							username: this.name,
 							mobile: this.mobile,
-							role: this.role
+							role: this.role,
+							isCadres: false
 						}
 					})
 					.then(res => {
 						console.log(res)
 					});
-				await db.collection('uni-id-users').where({
-					_id: this.uid
-				}).update({
-					username: this.name
-				})
+				if (this.role == "老师") {
+					await db.collection('uni-id-users').where({
+						_id: this.uid
+					}).update({
+						username: this.name
+					})
+				}
 				await uniCloud.callFunction({
 						name: 'joined-update-push',
 						data: {

@@ -208,6 +208,15 @@
                 }
                 
                 }
+                ,{
+                    "path" : "academicInfo/academicInfo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
 		}
 	],

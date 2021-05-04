@@ -115,7 +115,7 @@
 				console.log(res)
 				this.setRole({
 					username: res,
-					classRole: role,
+					classRole: role
 				})
 				console.log("currenrRole",this.currentRole)
 				uni.switchTab({

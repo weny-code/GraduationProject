@@ -102,7 +102,7 @@
 			<view v-show="currentRole.classRole == '老师'" style="width: 50%;margin: 20rpx auto;">
 				<u-subsection :list="list" :current="curNow" @change="sectionChange"></u-subsection>
 			</view>
-			<view v-show="curNow==0 && currentRole.classRole == '老师' && item.stu_class == noticeInfo.class_id"
+			<view v-show="curNow==0 && (currentRole.classRole == '老师' || isCadres) && item.stu_class == noticeInfo.class_id"
 				v-for="(item,index) in confirmedList.confirmed" :key="index" class="confirm-info">
 				<u-line color="#e4e7ed"></u-line>
 				<view class="person-info flex">
@@ -127,7 +127,7 @@
 					</view>
 				</view>
 			</view>
-			<view v-show="currentRole.classRole == '学生' && item.stu_class == noticeInfo.class_id"
+			<view v-show="(currentRole.classRole == '学生' || !isCadres) && item.stu_class == noticeInfo.class_id"
 				v-for="(item,index) in confirmedList.confirmed" :key="index" class="confirm-info">
 				<view v-if="item.stu_name == currentRole.username">
 					<u-line color="#e4e7ed"></u-line>
@@ -261,11 +261,12 @@
 				imgList: [],
 				fileList: [],
 				show: false,
-				fileUrl: ""
+				fileUrl: "",
+				isCadres:false
 			};
 		},
 		computed: {
-			...mapState(['uid', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth']),
+			...mapState(['uid', 'currentRoleClassList', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth']),
 			getPercent() {
 				return (confirmed) => {
 					this.confirmPercent = confirmed / (this.noticeInfo.class_size) * 100
@@ -280,6 +281,15 @@
 					this.imgList.push(item)
 				} else {
 					this.fileList.push(item)
+				}
+			}
+			for(let item of this.currentRoleClassList){
+				if(item._id==this.noticeInfo.class_id){
+					for(let j of item.class_members){
+						if(j.members_id==this.uid){
+							this.isCadres = j.isCadres
+						}
+					}
 				}
 			}
 			console.log("详情页的noticeInfo:", this.noticeInfo)

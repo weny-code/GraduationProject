@@ -13,7 +13,7 @@
 					<text>班级管理</text>
 					<u-icon name="arrow-right"></u-icon>
 				</view>
-				<view hover-class="hover" @click="goClassHome" v-show="currentRole.classRole == '学生'" class="desc">
+				<view hover-class="hover" @click="goAdminClassHome" v-show="currentRole.classRole == '学生'" class="desc">
 					<text>进入班级</text>
 					<u-icon size="30" name="arrow-right"></u-icon>
 				</view>
@@ -56,9 +56,9 @@
 					<!-- <u-icon custom-prefix="custom-icon" name="mask" :size="70"></u-icon> -->
 					<view class="grid-text">加入率</view>
 				</u-grid-item>
-				<u-grid-item :custom-style="customStyle">
+				<u-grid-item @click="goAcade" :custom-style="customStyle">
 					<u-icon custom-prefix="custom-icon" name="mask" :size="60"></u-icon>
-					<view class="grid-text">学生成绩</view>
+					<view class="grid-text">学业跟踪</view>
 				</u-grid-item>
 				<u-grid-item @click="goHandle" :custom-style="customStyle">
 					<u-badge :offset='[20,36]' type="error" :count="leaveCount"></u-badge>
@@ -74,12 +74,20 @@
 					<view class="grid-text">班级文件</view>
 				</u-grid-item>
 			</u-grid>
-			<u-grid v-show="currentRole.classRole == '学生'" :border="false" :col="2">
+			<u-grid v-show="currentRole.classRole == '学生'" :border="false" :col="3">
 				<u-grid-item @click="showLeave" :custom-style="customStyle">
 					<u-icon custom-prefix="custom-icon" name="qingjiashenhe" :size="60"></u-icon>
 					<view class="grid-text">请假申请</view>
 				</u-grid-item>
-				<u-grid-item :custom-style="customStyle">
+				<u-grid-item v-show="!isCadres" @click="goExpense" :custom-style="customStyle">
+					<u-icon custom-prefix="custom-icon" name="feiyongguanli" :size="60"></u-icon>
+					<view class="grid-text">班费查看</view>
+				</u-grid-item>
+				<u-grid-item v-show="isCadres" @click="goExpense" :custom-style="customStyle">
+					<u-icon custom-prefix="custom-icon" name="feiyongguanli" :size="60"></u-icon>
+					<view class="grid-text">班费管理</view>
+				</u-grid-item>
+				<u-grid-item @click="goClassFile" :custom-style="customStyle">
 					<u-icon custom-prefix="custom-icon" name="wenjian" :size="60"></u-icon>
 					<view class="grid-text">班级文件</view>
 				</u-grid-item>
@@ -112,7 +120,8 @@
 				joinedPercent: 0,
 				gridHeight: 0,
 				leaveCount: 0,
-				headImg: ""
+				headImg: "",
+				isCadres:false
 			};
 		},
 		computed: {
@@ -134,6 +143,21 @@
 						console.log(e);
 					}
 				});
+			},
+			goAcade(){
+				var params = encodeURIComponent(JSON.stringify(this.classList))
+				uni.navigateTo({
+					url: '../../packageC/academicInfo/academicInfo?params='+params,
+					success() {
+						console.log("跳转成功")
+					},
+					fail() {
+						console.log("跳转失败")
+					},
+					complete() {
+						console.log("跳转完成")
+					}
+				})
 			},
 			goExpense(){
 				var params = encodeURIComponent(JSON.stringify(this.classList))
@@ -166,8 +190,9 @@
 				})
 			},
 			goClassFile() {
+				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url: '../../packageB/pages/fileList/fileList',
+					url: '../../packageB/pages/fileList/fileList?params='+params,
 					success() {
 						console.log("跳转成功")
 					},
@@ -260,6 +285,12 @@
 			}
 		},
 		mounted() {
+				for(let item of this.classList.class_members){
+					if(item.members_id==this.uid){
+						this.isCadres = item.isCadres
+					}
+				}
+			
 			this.headImg = uni.getStorageSync('userInfo').avatar
 			// this.loadClass()
 			console.log("classList:", this.classList)

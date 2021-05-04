@@ -3,6 +3,9 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "uni-file-picker": "/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-gap": "/node-modules/uview-ui/components/u-gap/u-gap",
+    "u-checkbox": "/node-modules/uview-ui/components/u-checkbox/u-checkbox",
     "u-button": "/node-modules/uview-ui/components/u-button/u-button"
   }
 }
