@@ -1,10 +1,10 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "广播详情",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-popup": "/node-modules/uview-ui/components/u-popup/u-popup",
-    "u-read-more": "/node-modules/uview-ui/components/u-read-more/u-read-more",
     "u-image": "/node-modules/uview-ui/components/u-image/u-image",
+    "u-read-more": "/node-modules/uview-ui/components/u-read-more/u-read-more",
     "u-form-item": "/node-modules/uview-ui/components/u-form-item/u-form-item",
     "u-radio-group": "/node-modules/uview-ui/components/u-radio-group/u-radio-group",
     "u-radio": "/node-modules/uview-ui/components/u-radio/u-radio",

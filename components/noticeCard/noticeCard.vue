@@ -5,6 +5,7 @@
 				<view class="flex">
 					<u-avatar v-if="noticeList.type == '通知'" size="80" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/729cd66c-07c0-4781-bbf9-9459c6dd76c8.png"></u-avatar>
 					<u-avatar v-if="noticeList.type == '打卡'" size="80" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/0bc6d23c-03f1-4b3f-9449-37e43dd7e5ef.png"></u-avatar>
+					<u-avatar v-if="noticeList.type == '填表'" size="80" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/1ba22451-43db-45b6-8e2a-cd9df0d8a192.png"></u-avatar>
 					<view class="desc ">
 						<view class="title">
 							{{noticeList.title}}
@@ -25,6 +26,9 @@
 				<view v-if="noticeList.type == '打卡'" class="type-clock">
 					打卡
 				</view>
+				<view v-if="noticeList.type == '填表'" class="type-inves">
+					填表
+				</view>
 			</view>
 			<view class="content-desc">
 				<view class="u-line-1">{{noticeList.content}}</view>
@@ -36,7 +40,7 @@
 								{{confirmed}}
 							</view>
 							<view v-if="noticeList.type == '通知'" class="grid-text">已确认</view>
-							<view v-if="noticeList.type == '打卡'" class="grid-text">已完成</view>
+							<view v-if="noticeList.type == '打卡' || noticeList.type == '填表'" class="grid-text">已完成</view>
 						</u-grid-item>
 						<u-grid-item :custom-style="customStyle">
 							<view class="text">
@@ -45,7 +49,7 @@
 									custom-prefix="custom-icon" name="jinggao" :size="40"></u-icon>
 							</view>
 							<view v-if="noticeList.type == '通知'" class="grid-text">未确认</view>
-							<view v-if="noticeList.type == '打卡'" class="grid-text">未完成</view>
+							<view v-if="noticeList.type == '打卡' || noticeList.type == '填表'" class="grid-text">未完成</view>
 						</u-grid-item>
 						<u-grid-item :custom-style="customStyle">
 							<cmd-progress type="circle" :percent="getPercent" :width="gridHeight" stroke-shape="square"></cmd-progress>
@@ -65,6 +69,7 @@
 				<view class="flex">
 					<u-avatar v-if="noticeList.type == '通知'" size="80" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/729cd66c-07c0-4781-bbf9-9459c6dd76c8.png"></u-avatar>
 					<u-avatar v-if="noticeList.type == '打卡'" size="80" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/0bc6d23c-03f1-4b3f-9449-37e43dd7e5ef.png"></u-avatar>
+					<u-avatar v-if="noticeList.type == '填表'" size="80" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/1ba22451-43db-45b6-8e2a-cd9df0d8a192.png"></u-avatar>
 					<view class="desc ">
 						<view class="title">
 							{{noticeList.title}}
@@ -85,6 +90,9 @@
 				<view v-if="noticeList.type == '打卡'" class="type-clock">
 					打卡
 				</view>
+				<view v-if="noticeList.type == '填表'" class="type-clock">
+					填表
+				</view>
 			</view>
 			<view class="foot">
 				<view class="class-name">
@@ -99,11 +107,13 @@
 				<u-icon name="play-right-fill" color="#007AFF" size="28"></u-icon>
 				<text v-if="noticeList.type == '通知'">去确认</text>
 				<text v-if="noticeList.type == '打卡'">去打卡</text>
+				<text v-if="noticeList.type == '填表'">去填表</text>
 			</view>
 			<view v-show="hasConfirmed" class="btn" style="color: #606266;">
 				<u-icon name="checkmark" color="#606266" size="28"></u-icon>
 				<text v-if="noticeList.type == '通知'">已确认</text>
 				<text v-if="noticeList.type == '打卡'">已打卡</text>
+				<text v-if="noticeList.type == '填表'">已填表</text>
 			</view>
 		</view>
 	</view>
@@ -292,6 +302,12 @@
 	
 	.type-clock{
 		background: #0055ff;
+		padding: 10rpx 20rpx;
+		color: #ffffff;
+		border-radius: 30rpx;
+	}
+	.type-inves{
+		background: #d38d00;
 		padding: 10rpx 20rpx;
 		color: #ffffff;
 		border-radius: 30rpx;

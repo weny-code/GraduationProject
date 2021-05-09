@@ -23,7 +23,8 @@
         "pages/fileList/fileList",
         "classHome/classHome",
         "personalInfo/personalInfo",
-        "editMember/editMember"
+        "editMember/editMember",
+        "publicInvestigation/publicInvestigation"
       ]
     },
     {

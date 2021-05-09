@@ -98,12 +98,6 @@
 							<view class="grid-text">地理位置</view>
 						</view>
 					</u-grid-item>
-					<u-grid-item :index="4">
-						<view class="item">
-							<u-icon custom-prefix="custom-icon" color="#909399" name="tupian" :size="50"></u-icon>
-							<view class="grid-text">上传图片</view>
-						</view>
-					</u-grid-item>
 				</u-grid>
 			</view>
 		</u-popup>
@@ -137,7 +131,7 @@
 					[],
 					[]
 				],
-				typeList:['单项选择','多项选择','文本填空','地理位置','上传图片'],
+				typeList:['单项选择','多项选择','文本填空','地理位置'],
 				fileList:[]
 			};
 		},

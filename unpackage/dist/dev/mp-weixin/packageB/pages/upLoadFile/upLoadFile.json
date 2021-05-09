@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "上传文件",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "uni-file-picker": "/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker",

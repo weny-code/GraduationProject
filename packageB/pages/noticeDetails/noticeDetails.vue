@@ -12,6 +12,7 @@
 			</view>
 		</u-popup>
 		<view class="head">
+			<u-image width="100%" height="100%" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/5b97c251-75d2-4723-ab23-8d065873fb34.jpg"></u-image>
 			<view class="title">
 				{{noticeInfo.title}}
 			</view>
@@ -187,11 +188,11 @@
 								</view>
 							</u-td>
 						</u-tr>
-						<u-tr v-show="item.type=='文本填空'" class="u-tr">
+						<u-tr v-show="item.type=='文本填空' || item.type=='地理位置'" class="u-tr">
 							<u-th class="u-th">姓名</u-th>
 							<u-th class="u-th">填写内容</u-th>
 						</u-tr>
-						<u-tr v-show="item.type=='文本填空'" v-for="(data,index_) in tableList[index].value" :key="index_"
+						<u-tr v-show="item.type=='文本填空' || item.type=='地理位置'" v-for="(data,index_) in tableList[index].value" :key="index_"
 							class="u-tr">
 							<u-td class="u-td">{{data.name}}</u-td>
 							<u-td class="u-td">{{data.value}}</u-td>
@@ -209,6 +210,10 @@
 				ripple-bg-color="#909399">
 				提交打卡
 			</u-button>
+			<u-button @click="confirmClock" v-if="noticeInfo.type == '填表'" type="primary" shape="circle" :ripple="true"
+				ripple-bg-color="#909399">
+				提交填表统计
+			</u-button>
 		</view>
 		<view v-show="hasConfirmed && currentRole.classRole != '老师'" class="btn">
 			<u-button :custom-style="customStyle" type="info" v-if="noticeInfo.type == '通知'" shape="circle"
@@ -216,6 +221,9 @@
 			</u-button>
 			<u-button :custom-style="customStyle" type="info" v-if="noticeInfo.type == '打卡'" shape="circle"
 				:disabled="false">已完成打卡
+			</u-button>
+			<u-button :custom-style="customStyle" type="info" v-if="noticeInfo.type == '填表'" shape="circle"
+				:disabled="false">已完成填表统计
 			</u-button>
 		</view>
 	</view>
@@ -431,6 +439,11 @@
 						console.log('纬度：' + res.latitude);
 						console.log('经度：' + res.longitude);
 						_this.hasLocation = true
+						_this.choice.splice(index, 1, {
+							title: title,
+							type: type,
+							choice: _this.locationDetail + _this.locationName
+						})
 					}
 				});
 			},
@@ -452,7 +465,7 @@
 			setTableInfo() {
 				for (let i = 0; i < this.confirmedList.form_item.length; i++) {
 					const item = this.confirmedList.form_item[i]
-					if (this.confirmedList.form_item[i].type == '文本填空') {
+					if (this.confirmedList.form_item[i].type == '文本填空' || this.confirmedList.form_item[i].type == '地理位置') {
 						this.tableList.splice(i, 1, {
 							type: item.type,
 							title: item.title,
@@ -466,6 +479,7 @@
 						})
 					}
 				}
+				console.log("tableList:", this.tableList)
 				for (let i = 0; i < this.confirmedList.confirmed.length; i++) {
 					if (this.confirmedList.confirmed[i].stu_class == this.noticeInfo.class_id) {
 						for (let j = 0; j < this.confirmedList.confirmed[i].stu_choice.length; j++) {
@@ -473,7 +487,7 @@
 							for (let k = 0; k < this.tableList.length; k++) {
 								// const list = []
 								if (this.tableList[k].type == jj.type && this.tableList[k].title == jj.title) {
-									if (this.tableList[k].type != '文本填空') {
+									if (this.tableList[k].type == '单项选择' || this.tableList[k].type == '多项选择') {
 										// const list = []
 										for (let x = 0; x < this.tableList[k].options.length; x++) {
 											const list = []
@@ -617,9 +631,10 @@
 	}
 
 	.head {
-		background: #aaffff;
+		// background: #aaffff;
+		color: #fff;
+		 background-image: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/5b97c251-75d2-4723-ab23-8d065873fb34.jpg');
 		padding: 20rpx 30rpx;
-
 		.title {
 			font-size: 24px;
 			font-weight: bold;

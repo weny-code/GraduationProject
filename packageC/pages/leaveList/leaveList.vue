@@ -83,19 +83,18 @@
 			async getLeaveList() {
 				const db = uniCloud.database()
 				const dbCmd = db.command
-				await db.collection('class-leave,class-list,uni-id-users')
+				await db.collection('class-leave,uni-id-users')
 					.where({
 						'stu_id._id': this.uid,
 						class_id:this.classInfo._id
 					})
 					.field(
-						'_id,class_id,result,stu_id{_id,avatar},approver_id{nickname},leave_reason,leave_explain,submit_time,start_time,end_time'
+						'_id,class_id,result,stu_id{_id,avatar},approver_id{username},leave_reason,leave_explain,submit_time,start_time,end_time'
 					)
 					.get({
 						getCount: true
 					}).then((res) => {
-						console.log("res：", res.result.data)
-						console.log('classInfo:',this.classInfo)
+						console.log("res：", res)
 						this.list = res.result.data
 						// console.log(res.result.data[0].class_id == this.classInfo._id)
 						// this.list = res.result.data.filter(item => item.class_id == this.classInfo._id)

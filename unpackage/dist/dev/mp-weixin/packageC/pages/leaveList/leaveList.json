@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "请假记录",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-line": "/node-modules/uview-ui/components/u-line/u-line",

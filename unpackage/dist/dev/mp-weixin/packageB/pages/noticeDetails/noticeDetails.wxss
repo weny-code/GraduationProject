@@ -99,7 +99,8 @@ page {
   background: #f4f4f5;
 }
 .head {
-  background: #aaffff;
+  color: #fff;
+  background-image: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/5b97c251-75d2-4723-ab23-8d065873fb34.jpg");
   padding: 20rpx 30rpx;
 }
 .head .title {

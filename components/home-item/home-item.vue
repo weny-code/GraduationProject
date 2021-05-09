@@ -239,7 +239,7 @@
 									'class_id._id': dbCmd.in(classIdList)
 								})
 								.field(
-									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+									'class_id{class_name,class_size,_id},file_list,title,content,type,confirmed,form_item,release_time,publisher_id{_id,username}'
 								)
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
@@ -260,7 +260,7 @@
 									type:this.curType
 								})
 								.field(
-									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+									'class_id{class_name,class_size,_id},file_list,title,content,type,confirmed,form_item,release_time,publisher_id{_id,username}'
 								)
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
@@ -283,7 +283,7 @@
 									'publisher_id._id':this.uid
 								})
 								.field(
-									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+									'class_id{class_name,class_size,_id},file_list,confirmed,title,content,type,form_item,release_time,publisher_id{_id,username}'
 								)
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
@@ -305,7 +305,7 @@
 									'publisher_id._id':this.uid
 								})
 								.field(
-									'class_id{class_name,class_size,_id},file_list,title,content,type,form_item,release_time,publisher_id{_id,nickname},confirmed'
+									'class_id{class_name,class_size,_id},file_list,confirmed,title,content,type,form_item,release_time,publisher_id{_id,username}'
 								)
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
@@ -328,7 +328,7 @@
 									type: this.tempList[i].type,
 									title: this.tempList[i].title,
 									content: this.tempList[i].content,
-									publisher: this.tempList[i].publisher_id[0].nickname,
+									publisher: this.tempList[i].publisher_id[0].username,
 									publisherId: this.tempList[i].publisher_id[0]._id,
 									release_time: this.tempList[i].release_time,
 									confirmed: this.tempList[i].confirmed,

@@ -15,7 +15,7 @@
 					<u-image width="100" height="100" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/0bc6d23c-03f1-4b3f-9449-37e43dd7e5ef.png"></u-image>
 					<view class="grid-text">发布打卡</view>
 				</u-grid-item>
-				<u-grid-item v-if="currentRole.classRole == '老师' || isCadres" bg-color="#f9f9f9" :custom-style="customStyle">
+				<u-grid-item v-if="currentRole.classRole == '老师' || isCadres" @click="goPubInves" bg-color="#f9f9f9" :custom-style="customStyle">
 					<u-image width="100" height="100" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-d0864766-02e5-4b10-8e08-72e0af293546/1ba22451-43db-45b6-8e2a-cd9df0d8a192.png"></u-image>
 					<view class="grid-text">调查问卷</view>
 				</u-grid-item>
@@ -114,6 +114,20 @@
 			goPubClock(){
 				uni.navigateTo({
 					url: '../../packageB/pages/publishClock/publishClock',
+					success() {
+						console.log("跳转成功")
+					},
+					fail() {
+						console.log("跳转失败")
+					},
+					complete() {
+						console.log("跳转完成")
+					}
+				})
+			},
+			goPubInves(){
+				uni.navigateTo({
+					url: '../../packageB/publicInvestigation/publicInvestigation',
 					success() {
 						console.log("跳转成功")
 					},

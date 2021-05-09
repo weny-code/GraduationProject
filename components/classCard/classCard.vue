@@ -121,7 +121,7 @@
 				gridHeight: 0,
 				leaveCount: 0,
 				headImg: "",
-				isCadres:false
+				isCadres: false
 			};
 		},
 		computed: {
@@ -144,10 +144,10 @@
 					}
 				});
 			},
-			goAcade(){
+			goAcade() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url: '../../packageC/academicInfo/academicInfo?params='+params,
+					url: '../../packageC/academicInfo/academicInfo?params=' + params,
 					success() {
 						console.log("跳转成功")
 					},
@@ -159,10 +159,10 @@
 					}
 				})
 			},
-			goExpense(){
+			goExpense() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url: '../../packageC/classExpense/classExpense?params='+params,
+					url: '../../packageC/classExpense/classExpense?params=' + params,
 					success() {
 						console.log("跳转成功")
 					},
@@ -192,7 +192,7 @@
 			goClassFile() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url: '../../packageB/pages/fileList/fileList?params='+params,
+					url: '../../packageB/pages/fileList/fileList?params=' + params,
 					success() {
 						console.log("跳转成功")
 					},
@@ -207,7 +207,7 @@
 			goClassHome() {
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
-					url:'../../packageB/classHome/classHome?params='+params,
+					url: '../../packageB/classHome/classHome?params=' + params,
 					// url: '../../packageB/pages/quitClass/quitClass?params=' + params,
 					success() {
 						console.log("跳转成功")
@@ -240,7 +240,7 @@
 				var params = encodeURIComponent(JSON.stringify(this.classList))
 				uni.navigateTo({
 					// url: '../../packageB/pages/deleteClass/deleteClass?params=' + params,
-					url:'../../packageB/classHome/classHome?params='+params,
+					url: '../../packageB/classHome/classHome?params=' + params,
 					success() {
 						console.log("跳转成功")
 					},
@@ -285,12 +285,11 @@
 			}
 		},
 		mounted() {
-				for(let item of this.classList.class_members){
-					if(item.members_id==this.uid){
-						this.isCadres = item.isCadres
-					}
+			for (let item of this.classList.class_members) {
+				if (item.members_id == this.uid) {
+					this.isCadres = item.isCadres
 				}
-			
+			}
 			this.headImg = uni.getStorageSync('userInfo').avatar
 			// this.loadClass()
 			console.log("classList:", this.classList)

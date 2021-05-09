@@ -20,42 +20,6 @@
 			<view class="swiperContainer">
 				<u-swiper :border-radius="8" :height="300" :list="imgList"></u-swiper>
 			</view>
-			<view class="list">
-				<u-grid :col="4" :border="false">
-					<u-grid-item>
-						<u-icon name="photo" :size="46"></u-icon>
-						<view class="grid-text">通知公告</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="lock" :size="46"></u-icon>
-						<view class="grid-text">作业</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="hourglass" :size="46"></u-icon>
-						<view class="grid-text">打卡</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="photo" :size="46"></u-icon>
-						<view class="grid-text">填表接龙</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="lock" :size="46"></u-icon>
-						<view class="grid-text">学生请假</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="hourglass" :size="46"></u-icon>
-						<view class="grid-text">私密成绩</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="photo" :size="46"></u-icon>
-						<view class="grid-text">班级缴费</view>
-					</u-grid-item>
-					<u-grid-item>
-						<u-icon name="lock" :size="46"></u-icon>
-						<view class="grid-text">班级相册</view>
-					</u-grid-item>
-				</u-grid>
-			</view>
 			<view class="choose">
 				<view class="btn" @click="getUserProfile(0)">
 					<view class="test1">

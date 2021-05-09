@@ -152,4 +152,8 @@
 	/*每个页面公共css */
 	@import "./static/iconfont.css";
 	@import "uview-ui/index.scss";
+	page {
+		height: 100%;
+		background-color: #f7f8fa;
+	}
 </style>

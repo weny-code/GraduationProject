@@ -54,7 +54,7 @@
 				{
 					"path": "pages/upLoadFile/upLoadFile",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "上传文件",
 						"enablePullDownRefresh": false
 					}
 
@@ -86,7 +86,7 @@
 				{
 					"path": "pages/publishNotice/publishNotice",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "发布通知",
 						"enablePullDownRefresh": false
 					}
 
@@ -94,7 +94,7 @@
 				{
 					"path": "pages/noticeDetails/noticeDetails",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "广播详情",
 						"enablePullDownRefresh": false
 					}
 
@@ -102,7 +102,7 @@
 				{
 					"path": "pages/publishClock/publishClock",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "发布打卡",
 						"enablePullDownRefresh": false
 					}
 
@@ -110,27 +110,27 @@
 				{
 					"path": "pages/applyLeave/applyLeave",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "请假申请",
 						"enablePullDownRefresh": false
 					}
 				},
 				{
 					"path": "pages/handleApply/handleApply",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "请假审批",
 						"enablePullDownRefresh": false
 					}
 				},
 				{
 					"path": "pages/fileList/fileList",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "班级文件列表",
 						"enablePullDownRefresh": false
 					}
 				}, {
 					"path": "classHome/classHome",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "班级详情",
 						"enablePullDownRefresh": false
 					}
 
@@ -139,7 +139,7 @@
                     "path" : "personalInfo/personalInfo",
                     "style" :                                                                                    
                 {
-                    "navigationBarTitleText": "",
+                    "navigationBarTitleText": "个人信息",
                     "enablePullDownRefresh": false
                 }
                 
@@ -148,7 +148,16 @@
                     "path" : "editMember/editMember",
                     "style" :                                                                                    
                 {
-                    "navigationBarTitleText": "",
+                    "navigationBarTitleText": "编辑信息",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "publicInvestigation/publicInvestigation",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "填表统计",
                     "enablePullDownRefresh": false
                 }
                 
@@ -181,21 +190,21 @@
 				{
 					"path": "pages/chooseClass/chooseClass",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "选择班级",
 						"enablePullDownRefresh": false
 					}
 				},
 				{
 					"path": "pages/leaveList/leaveList",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "请假记录",
 						"enablePullDownRefresh": false
 					}
 				},
 				{
 					"path": "pages/leaveDetail/leaveDetail",
 					"style": {
-						"navigationBarTitleText": "",
+						"navigationBarTitleText": "请假详情",
 						"enablePullDownRefresh": false
 					}
 				}
@@ -203,7 +212,7 @@
                     "path" : "classExpense/classExpense",
                     "style" :                                                                                    
                 {
-                    "navigationBarTitleText": "",
+                    "navigationBarTitleText": "班费记录",
                     "enablePullDownRefresh": false
                 }
                 
@@ -212,7 +221,7 @@
                     "path" : "academicInfo/academicInfo",
                     "style" :                                                                                    
                 {
-                    "navigationBarTitleText": "",
+                    "navigationBarTitleText": "学业跟踪",
                     "enablePullDownRefresh": false
                 }
                 

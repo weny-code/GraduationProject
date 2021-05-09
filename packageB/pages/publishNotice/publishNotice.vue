@@ -3,11 +3,11 @@
 		<view style="content: ''; overflow: hidden;"></view>
 		<view class="main">
 			<view class="title">
-				<u-input v-model="noticeTitle" type="text" :border-bottom="true" placeholder="请输入通知的标题" />
+				<u-input :field-style="fieldStyle" placeholder-style="font-size:20px" v-model="noticeTitle" type="text" :border-bottom="true" placeholder="请输入通知的标题" />
 			</view>
 			<u-line color="#e4e7ed"></u-line>
 			<view class="content">
-				<u-input v-model="noticeContent" placeholder="请输入此次通知的内容" maxlength='-1' type="textarea"
+				<u-input :field-style="fieldStyle" placeholder-style="font-size:20px" v-model="noticeContent" placeholder="请输入此次通知的内容" maxlength='-1' type="textarea"
 					:border-top="false" height="30" :auto-height="false" />
 			</view>
 			<view class="upLoad">
@@ -80,6 +80,10 @@
 				show: false,
 				content: "",
 				noticeId: "",
+				fieldStyle:{
+					'fontSize':'20px',
+					'lineHeight':'20px'
+				},
 				imgStyle: {
 					"height": "200rpx", // 边框高度
 					"width": "200rpx", // 边框宽度

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "选择班级",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",

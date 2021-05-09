@@ -8,6 +8,14 @@
 				<text>{{quitClassInfo.class_name}}</text>
 			</view>
 		</view>
+		<view class="box">
+			<view class="left">
+				<text>班级口令</text>
+			</view>
+			<view class="right">
+				<text>{{quitClassInfo._id}}</text>
+			</view>
+		</view>
 		<view @click="checkCreator" class="box">
 			<view class="left">
 				<text>退出班级</text>

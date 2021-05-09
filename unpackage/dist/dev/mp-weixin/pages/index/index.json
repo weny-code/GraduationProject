@@ -5,8 +5,6 @@
     "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
     "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper",
-    "u-grid": "/node-modules/uview-ui/components/u-grid/u-grid",
-    "u-grid-item": "/node-modules/uview-ui/components/u-grid-item/u-grid-item",
     "idenfity-list": "/components/identityList/identityList",
     "loading": "/components/loading"
   }
