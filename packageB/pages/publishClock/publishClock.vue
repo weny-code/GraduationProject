@@ -14,8 +14,9 @@
 				<view class="upload-desc">
 					选择图片
 				</view>
-				<uni-file-picker ref="Imgfiles" v-model="imageValue" fileMediatype="image" mode="grid" @select="selectImg"
-					@progress="progress" :auto-upload="true" :image-styles="imgStyle" @success="successImg" @fail="fail">
+				<uni-file-picker ref="Imgfiles" v-model="imageValue" fileMediatype="image" mode="grid"
+					@select="selectImg" @progress="progress" :auto-upload="true" :image-styles="imgStyle"
+					@success="successImg" @fail="fail">
 					<view class="up-img">
 						<u-icon custom-prefix="custom-icon" name="tianjiatupian" :size="100"></u-icon>
 					</view>
@@ -39,7 +40,8 @@
 			</view>
 			<u-line color="#e4e7ed"></u-line>
 			<view class="form">
-				<clock-card :formInfo="item" :formIdx="index" :cardId="item.id" v-for="(item,index) in formList[0]" :key="item.id" />
+				<clock-card :formInfo="item" :formIdx="index" :cardId="item.id" v-for="(item,index) in formList[0]"
+					:key="item.id" />
 			</view>
 			<view @click="popshow = true" class="addForm">
 				添加填表项
@@ -55,9 +57,9 @@
 					<u-gap height="8" bg-color="#f7f8fa"></u-gap>
 					<view class="box">
 						<u-checkbox size="50" label-size="22px" shape="circle" @change="checkboxChange"
-							v-model="item.checked" :name="item.className">
+							v-model="item.checked" :name="item.class_name">
 							<view class="class-name">
-								{{item.className}}
+								{{item.class_name}}
 							</view>
 						</u-checkbox>
 					</view>
@@ -131,8 +133,8 @@
 					[],
 					[]
 				],
-				typeList:['单项选择','多项选择','文本填空','地理位置'],
-				fileList:[]
+				typeList: ['单项选择', '多项选择', '文本填空', '地理位置'],
+				fileList: []
 			};
 		},
 		computed: {
@@ -140,18 +142,28 @@
 		},
 		onLoad() {
 			this.tempList = this.currentRoleClassList
+			var dataList = []
 			if (this.currentRole.classRole == '学生') {
-				this.classList = this.tempList.filter((item) => {
+				dataList = this.tempList.filter((item) => {
 					for (let j of item.class_members) {
 						if (j.members_id == this.uid) {
 							return j.isCadres
 						}
 					}
 				})
+				for (let item of dataList) {
+					this.classList.push({
+						class_name: item.class_name,
+						classId: item._id,
+						checked: false,
+						disabled: false
+					})
+				}
+				console.log('classList:',this.classList)
 			} else {
 				for (let item of this.tempList) {
 					this.classList.push({
-						className: item.class_name,
+						class_name: item.class_name,
 						classId: item._id,
 						checked: false,
 						disabled: false
@@ -186,9 +198,9 @@
 						publisher_id: this.uid,
 						class_id: this.chooseClass,
 						release_time: time,
-						file_list:this.fileList,
+						file_list: this.fileList,
 						confirmed: [],
-						form_item:[]
+						form_item: []
 					})
 					.then((res) => {
 						uni.showToast({
@@ -196,10 +208,10 @@
 						})
 						console.log(res)
 						this.noticeId = res.result.id
-						for(let i of this.formList[0]){
-							uni.$emit('setForm',{
+						for (let i of this.formList[0]) {
+							uni.$emit('setForm', {
 								cardId: i.id,
-								noticeId:_this.noticeId
+								noticeId: _this.noticeId
 							})
 						}
 						this.show = true
@@ -231,13 +243,13 @@
 				console.log(e);
 				if (e.value) {
 					for (let i of this.classList) {
-						if (i.className == e.name) {
+						if (i.class_name == e.name) {
 							this.chooseClass.push(i.classId)
 						}
 					}
 				} else {
 					for (let i of this.classList) {
-						if (i.className == e.name) {
+						if (i.class_name == e.name) {
 							this.chooseClass.splice(this.chooseClass.findIndex(res => res === i.classId), 1)
 						}
 					}
@@ -245,10 +257,10 @@
 				console.log(this.chooseClass)
 			},
 			addForm(index) {
-				console.log("添加填表项",index)
+				console.log("添加填表项", index)
 				this.formList[0].push({
 					id: this.formList[0].length,
-					type:this.typeList[index]
+					type: this.typeList[index]
 				})
 				this.popshow = false
 				console.log("填表项列表：", this.formList[0])
@@ -285,12 +297,12 @@
 			progress(e) {
 				console.log('上传进度：', e)
 			},
-			
+
 			// 上传成功
 			successImg(e) {
 				// this.upLoadImgsuccess = true
 				console.log('上传成功', e)
-				for(let item of e.tempFiles){
+				for (let item of e.tempFiles) {
 					this.fileList.push(item)
 				}
 				console.log('fileList:', this.fileList)
@@ -301,7 +313,7 @@
 			successFile(e) {
 				// this.upLoadFilesuccess = true
 				console.log('上传成功', e)
-				for(let item of e.tempFiles){
+				for (let item of e.tempFiles) {
 					this.fileList.push(item)
 				}
 				console.log('fileList:', this.fileList)
@@ -338,12 +350,12 @@
 		overflow: hidden;
 		padding: 10rpx 0;
 	}
-	
+
 	.grid-text {
-			font-size: 28rpx;
-			margin-top: 10rpx;
-			color: #000000;
-		}
+		font-size: 28rpx;
+		margin-top: 10rpx;
+		color: #000000;
+	}
 
 	.title,
 	.content {
@@ -387,48 +399,52 @@
 		padding: 30rpx 10rpx;
 		text-align: center;
 	}
-		
-	.head{
+
+	.head {
 		text-align: center;
 		font-size: 20px;
 		font-weight: bold;
 		padding: 40rpx 10rpx 10rpx 10rpx;
 	}
-	
-	.grid{
+
+	.grid {
 		margin-top: 20rpx;
 		padding: 20rpx;
 		margin-bottom: 300rpx;
 	}
-	
-	.item{
+
+	.item {
 		padding: 20rpx 30rpx;
 		background: #f4f4f5;
 		text-align: center;
 		border-radius: 16rpx;
 	}
-	.upLoad{
+
+	.upLoad {
 		margin-left: 10rpx;
 		padding: 10rpx;
-		.upload-desc{
+
+		.upload-desc {
 			font-size: 18px;
 			font-weight: bold;
 			color: #007AFF;
 			padding: 10rpx;
 			margin-bottom: 10rpx;
 		}
-		.up-img{
+
+		.up-img {
 			width: 200rpx;
 			height: 200rpx;
-			background-color:#dfdfdf;
+			background-color: #dfdfdf;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
-		.up-file{
+
+		.up-file {
 			width: 100rpx;
 			height: 100rpx;
-			background-color:#dfdfdf;
+			background-color: #dfdfdf;
 			display: flex;
 			justify-content: center;
 			align-items: center;

@@ -126,7 +126,7 @@
 						'_id': dbCmd.in(this.teacherList)
 					})
 					.field(
-						'_id,nickname'
+						'_id,username'
 					)
 					.get({
 						getCount: true
@@ -137,7 +137,7 @@
 							console.log("item：",item)
 							this.teacherList.push({
 								value:item._id,
-								label:item.nickname
+								label:item.username
 							})
 						}
 						// this.teacherList = res.result.data

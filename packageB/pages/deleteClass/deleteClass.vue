@@ -5,7 +5,15 @@
 				<text>班级名称</text>
 			</view>
 			<view class="right">
-				<text>{{quitClassInfo.class_name}}</text>
+				<u-input input-align="right" v-model="quitClassInfo.class_name" type="text" :border="false" />
+			</view>
+		</view>
+		<view class="box">
+			<view class="left">
+				<text>班级人数</text>
+			</view>
+			<view class="right">
+				<u-input input-align="right" v-model="quitClassInfo.class_size" type="text" :border="false" />
 			</view>
 		</view>
 		<view class="box">

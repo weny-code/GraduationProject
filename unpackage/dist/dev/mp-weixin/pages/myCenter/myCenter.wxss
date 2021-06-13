@@ -44,6 +44,11 @@
   -webkit-flex-direction: column;
           flex-direction: column;
 }
+.btn {
+  width: 60%;
+  height: 300rpx;
+  margin: 20rpx auto;
+}
 .logo {
   width: 750rpx;
   height: 240rpx;

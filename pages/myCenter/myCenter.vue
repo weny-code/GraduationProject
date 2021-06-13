@@ -8,35 +8,13 @@
 					<text class="go-login navigat-arrow">&#xe65e;</text>
 				</view>
 			</view>
-			<view class="center-list flex">
-				<view class="center-list-item border-bottom flex">
-					<text class="list-icon">&#xe60f;</text>
-					<text class="list-text">帐号管理</text>
-					<text class="navigat-arrow">&#xe65e;</text>
+			<view class="btn flex center">
+				<u-button @click="goJoin" type="primary" :plain="true">加入班级</u-button>
+				<view style="margin-top: 20rpx;">
+					<u-button @click="goCreate" type="primary" :plain="true">创建班级</u-button>
 				</view>
-				<view class="center-list-item flex">
-					<text class="list-icon">&#xe639;</text>
-					<text class="list-text">新消息通知</text>
-					<text class="navigat-arrow">&#xe65e;</text>
-				</view>
-			</view>
-			<view class="center-list flex">
-				<view class="center-list-item border-bottom flex">
-					<text class="list-icon">&#xe60b;</text>
-					<text class="list-text">帮助与反馈</text>
-					<text class="navigat-arrow">&#xe65e;</text>
-				</view>
-				<view class="center-list-item flex">
-					<text class="list-icon">&#xe65f;</text>
-					<text class="list-text">服务条款及隐私</text>
-					<text class="navigat-arrow">&#xe65e;</text>
-				</view>
-			</view>
-			<view class="center-list flex">
-				<view class="center-list-item flex">
-					<text class="list-icon">&#xe614;</text>
-					<text class="list-text">关于应用</text>
-					<text class="navigat-arrow">&#xe65e;</text>
+				<view style="margin-top: 20rpx;">
+					<u-button @click="backToIndex" type="warning" :plain="true">切换身份</u-button>
 				</view>
 			</view>
 		</view>
@@ -59,7 +37,39 @@
 			...mapState(['uid', 'currentRoleClassList', 'currentRole', 'hasLogin', 'userInfo', 'hasAuth', 'tabbar'])
 		},
 		methods: {
-			
+			backToIndex(){
+				uni.reLaunch({
+				    url: '../index/index'
+				});
+			},
+			goJoin(){
+				uni.navigateTo({
+					url: '../../packageB/pages/joinClass/joinClass',
+					success() {
+						console.log("跳转成功")
+					},
+					fail() {
+						console.log("跳转失败")
+					},
+					complete() {
+						console.log("跳转完成")
+					}
+				})
+			},
+			goCreate(){
+				uni.navigateTo({
+					url: '../../packageB/pages/createClass/createClass',
+					success() {
+						console.log("跳转成功")
+					},
+					fail() {
+						console.log("跳转失败")
+					},
+					complete() {
+						console.log("跳转完成")
+					}
+				})
+			}
 		}
 	}
 </script>
@@ -77,7 +87,11 @@
 	.center {
 		flex-direction: column;
 	}
-
+	.btn{
+		width: 60%;
+		height: 300rpx;
+		margin: 20rpx auto;
+	}
 	.logo {
 		width: 750upx;
 		height: 240upx;

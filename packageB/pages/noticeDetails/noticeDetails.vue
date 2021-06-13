@@ -100,7 +100,7 @@
 			<view style="padding: 10rpx;font-size: 18px;font-weight: bold;">
 				已填写：
 			</view>
-			<view v-show="currentRole.classRole == '老师'" style="width: 50%;margin: 20rpx auto;">
+			<view v-show="currentRole.classRole == '老师' || isCadres" style="width: 50%;margin: 20rpx auto;">
 				<u-subsection :list="list" :current="curNow" @change="sectionChange"></u-subsection>
 			</view>
 			<view v-show="curNow==0 && (currentRole.classRole == '老师' || isCadres) && item.stu_class == noticeInfo.class_id"
@@ -128,7 +128,7 @@
 					</view>
 				</view>
 			</view>
-			<view v-show="(currentRole.classRole == '学生' || !isCadres) && item.stu_class == noticeInfo.class_id"
+			<view v-show="(currentRole.classRole == '学生' && !isCadres) && item.stu_class == noticeInfo.class_id"
 				v-for="(item,index) in confirmedList.confirmed" :key="index" class="confirm-info">
 				<view v-if="item.stu_name == currentRole.username">
 					<u-line color="#e4e7ed"></u-line>
@@ -154,7 +154,7 @@
 					</view>
 				</view>
 			</view>
-			<view v-show="curNow==1 && currentRole.classRole == '老师'" class="confirm-info">
+			<view v-show="curNow==1 && (currentRole.classRole == '老师' || isCadres)" class="confirm-info">
 				<view v-show="noticeInfo.type != '通知'" style="margin-top: 20rpx;" v-for="(item,index) in tableList"
 					:key="index">
 					<view class="table-title">

@@ -103,6 +103,7 @@
 				}))
 			},
 			async saveInfo() {
+				const db = uniCloud.database()
 				await uniCloud.callFunction({
 						name: 'member-update-push',
 						data: {

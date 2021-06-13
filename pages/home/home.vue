@@ -7,7 +7,7 @@
 		</u-mask> -->
 		<u-navbar :border-bottom="false" :is-back="false">
 			<view class="slot-wrap">
-				<u-avatar size="70" :src="userHead"></u-avatar>
+				<u-avatar @click="goPersonal" size="70" :src="userHead"></u-avatar>
 				<view v-if="currentRole.classRole=='老师'" class="name">
 					{{currentRole.username}}老师
 				</view>
@@ -89,6 +89,14 @@
 				uni.reLaunch({
 					url: '../index/index'
 				});
+			},
+			goPersonal() {
+				uni.navigateTo({
+					url:"../../packageB/personalInfo/personalInfo",
+					success() {
+						console.log("跳转成功")
+					},
+				})
 			},
 			async getClassList(){
 				const db = uniCloud.database()

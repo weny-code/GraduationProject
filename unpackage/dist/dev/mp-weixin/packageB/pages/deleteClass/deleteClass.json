@@ -2,6 +2,7 @@
   "navigationBarTitleText": "邑班之助",
   "enablePullDownRefresh": false,
   "usingComponents": {
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
     "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
     "u-button": "/node-modules/uview-ui/components/u-button/u-button",
     "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal"

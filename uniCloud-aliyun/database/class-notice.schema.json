@@ -67,7 +67,6 @@
 			"bsonType": "array",
 			"description": "确认成员",
 			"arrayType": "object",
-			"foreignKey": "uni-id-users._id",
 			"title": "确认成员"
 		}
 	}

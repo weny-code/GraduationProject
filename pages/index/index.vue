@@ -318,7 +318,7 @@
 		flex-direction: column;
 		justify-content: center;
 		border-radius: 12rpx;
-		color: #FFFFFF;
+		color: #ffffff;
 		border: none;
 		text-align: center;
 		padding: 70rpx 20rpx;
@@ -349,17 +349,13 @@
 	.test1 {
 		position: relative;
 		border-radius: 12rpx;
-		background: linear-gradient(90deg, #ffc700 0%, #e91e1e 33%, #6f27b0 66%, #00ff88 100%);
-		background-position: 100% 0;
-		animation: bgSize 5s infinite ease-in-out alternate;
+		background: #0055ff;
 	}
 
 	.test2 {
 		position: relative;
 		border-radius: 12rpx;
-		background: linear-gradient(90deg, #e50000 0%, #b83d00 33%, #ff5500 66%, #ffaa00 100%);
-		background-position: 100% 0;
-		animation: bgSize 5s infinite ease-in-out alternate;
+		background: #ffaa00;
 	}
 
 	@keyframes bgSize {

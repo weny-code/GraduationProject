@@ -1,16 +1,6 @@
 <template>
 	<view>
-		<u-popup v-model="show" mode="bottom" border-radius="14">
-			<view @click="openFile" class="pop-item">
-				打开文档
-			</view>
-			<view @click="copyUrl" class="pop-item">
-				复制下载链接
-			</view>
-			<view class="pop-item">
-				取消
-			</view>
-		</u-popup>
+		<u-action-sheet @click="chooseAction" :list="sheetList" v-model="show" :cancel-btn="true"></u-action-sheet>
 		<view class="file-list">
 			<view @click="chooseFile(item)" v-for="(item,index) in fileList" :key="index" class="file">
 				<view>
@@ -48,6 +38,11 @@
 				classInfo:{},
 				show:false,
 				fileUrl: "",
+				sheetList: [{
+					text: '打开文档'
+				}, {
+					text: '复制下载链接'
+				}],
 			};
 		},
 		onLoad(option) {
@@ -56,8 +51,16 @@
 			this.getFileList()
 		},
 		methods:{
+			chooseAction(index){
+				if(index==0){
+					this.openFile()
+				}else{
+					this.copyUrl()
+				}
+			},
 			chooseFile(data){
-				if(data.extname!='png' && data.extname!='jpg'){
+				console.log("所选文件：",data)
+				if(data.file_detail.extname != 'png' && data.file_detail.extname != 'jpg'){
 					this.openPop(data)
 				}else{
 					this.imgPreview(data)
@@ -68,6 +71,7 @@
 				await db.collection('class-file,class-list,uni-id-users').where({
 					'class_id._id':this.classInfo._id
 				}).field('uploader_id{username},class_id{class_name},upload_time,file_detail')
+				.orderBy('upload_time desc')
 				.get()
 				.then((res=>{
 					console.log(res.result.data)
@@ -75,7 +79,7 @@
 				}))
 			},
 			openPop(data) {
-				this.fileUrl = data.url
+				this.fileUrl = data.file_detail.url
 				this.show = true
 			},
 			openFile() {
@@ -109,7 +113,7 @@
 				uni.previewImage({
 					indicator: "number",
 					loop: true,
-					urls: [item.url]
+					urls: [item.file_detail.url]
 				})
 			},
 		}

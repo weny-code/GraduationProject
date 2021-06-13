@@ -44,9 +44,9 @@
 					<u-gap height="8" bg-color="#f7f8fa"></u-gap>
 					<view class="box">
 						<u-checkbox size="50" label-size="22px" shape="circle" @change="checkboxChange"
-							v-model="item.checked" :name="item.className">
+							v-model="item.checked" :name="item.class_name">
 							<view class="class-name">
-								{{item.className}}
+								{{item.class_name}}
 							</view>
 						</u-checkbox>
 					</view>
@@ -82,7 +82,6 @@
 				noticeId: "",
 				fieldStyle:{
 					'fontSize':'20px',
-					'lineHeight':'20px'
 				},
 				imgStyle: {
 					"height": "200rpx", // 边框高度
@@ -107,18 +106,27 @@
 		},
 		onLoad() {
 			this.tempList = this.currentRoleClassList
+			var dataList = []
 			if (this.currentRole.classRole == '学生') {
-				this.classList = this.tempList.filter((item) => {
+				dataList = this.tempList.filter((item) => {
 					for (let j of item.class_members) {
 						if (j.members_id == this.uid) {
 							return j.isCadres
 						}
 					}
 				})
+				for (let item of dataList) {
+					this.classList.push({
+						class_name: item.class_name,
+						classId: item._id,
+						checked: false,
+						disabled: false
+					})
+				}
 			} else {
 				for (let item of this.tempList) {
 					this.classList.push({
-						className: item.class_name,
+						class_name: item.class_name,
 						classId: item._id,
 						checked: false,
 						disabled: false
@@ -182,13 +190,13 @@
 				console.log(e);
 				if (e.value) {
 					for (let i of this.classList) {
-						if (i.className == e.name) {
+						if (i.class_name == e.name) {
 							this.chooseClass.push(i.classId)
 						}
 					}
 				} else {
 					for (let i of this.classList) {
-						if (i.className == e.name) {
+						if (i.class_name == e.name) {
 							this.chooseClass.splice(this.chooseClass.findIndex(res => res === i.classId), 1)
 						}
 					}

@@ -139,13 +139,15 @@
 				}
 				db.collection('class-leave,uni-id-users').where({
 						'class_id': this.classInfo._id,
-						result: dbCmd.in(tempList)
+						result: dbCmd.in(tempList),
+						'approver_id._id':this.uid
 					})
 					.field(
-						'_id,class_id,stu_name,result,stu_id{_id,avatar},approver_id{nickname},leave_reason,leave_explain,submit_time,start_time,end_time'
+						'_id,class_id,stu_name,result,stu_id{_id,avatar},approver_id{username},leave_reason,leave_explain,submit_time,start_time,end_time'
 					)
 					.skip(pageNo * pageSize) // 跳过前20条
 					.limit(pageSize) // 获取20条
+					.orderBy('submit_time desc')
 					.get({
 						getCount: true
 					}).then((res => {

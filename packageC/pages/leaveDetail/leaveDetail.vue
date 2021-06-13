@@ -82,6 +82,7 @@
 				})
 				.then((res=>{
 					this.show=false
+					this.leaveInfo.result=id
 					console.log(res)
 				}))
 			}

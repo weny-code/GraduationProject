@@ -121,7 +121,8 @@
 				gridHeight: 0,
 				leaveCount: 0,
 				headImg: "",
-				isCadres: false
+				isCadres: false,
+				memberList:[]
 			};
 		},
 		computed: {
@@ -256,7 +257,8 @@
 				const db = uniCloud.database()
 				await db.collection('class-leave').where({
 					class_id: this.classList._id,
-					result: 0
+					result: 0,
+					'approver_id':this.uid
 				}).get({
 					getCount: true
 				}).then((res => {
@@ -266,16 +268,19 @@
 			},
 			async getStuCount(classID) {
 				const db = uniCloud.database()
-				var count = Number
+				var count = 0
 				await db.collection('class-list').where({
 					'_id': classID,
-					'class_members.class_role': '学生'
-				}).get({
-					getCount: true
-				}).then((res => {
+				}).get().then((res => {
 					console.log("!!!!!", res)
-					count = res.result.count
-
+					// this.memberList = res.result.data[0].class_members
+					// console.log("memberList:",this.memberList)
+					for(let item of res.result.data[0].class_members){
+						if(item.class_role == '学生'){
+							count++
+						}
+						console.log('count:',count)
+					}
 				}))
 				return count
 			},

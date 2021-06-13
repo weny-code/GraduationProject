@@ -241,9 +241,9 @@
 								.field(
 									'class_id{class_name,class_size,_id},file_list,title,content,type,confirmed,form_item,release_time,publisher_id{_id,username}'
 								)
+								.orderBy('_id desc')
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
-								.orderBy('release_time desc')
 								.get({
 									getCount: true
 								}).then((res) => {
@@ -262,9 +262,9 @@
 								.field(
 									'class_id{class_name,class_size,_id},file_list,title,content,type,confirmed,form_item,release_time,publisher_id{_id,username}'
 								)
+								.orderBy('_id desc')
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
-								.orderBy('release_time desc')
 								.get({
 									getCount: true
 								}).then((res) => {
@@ -285,9 +285,9 @@
 								.field(
 									'class_id{class_name,class_size,_id},file_list,confirmed,title,content,type,form_item,release_time,publisher_id{_id,username}'
 								)
+								.orderBy('_id desc')
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
-								.orderBy('release_time desc')
 								.get({
 									getCount: true
 								}).then((res) => {
@@ -307,9 +307,9 @@
 								.field(
 									'class_id{class_name,class_size,_id},file_list,confirmed,title,content,type,form_item,release_time,publisher_id{_id,username}'
 								)
+								.orderBy('_id desc')
 								.skip(pageNo * pageSize) // 跳过前20条
 								.limit(pageSize) // 获取20条
-								.orderBy('release_time desc')
 								.get({
 									getCount: true
 								}).then((res) => {
@@ -349,16 +349,16 @@
 			},
 			async getStuCount(classID) {
 				const db = uniCloud.database()
-				var count = Number
+				var count = 0
 				await db.collection('class-list').where({
 					'_id': classID,
-					'class_members.class_role': '学生'
-				}).get({
-					getCount: true
-				}).then((res => {
-					console.log("!!!!!", res)
-					count = res.result.count
-
+				}).get().then((res => {
+					for(let item of res.result.data[0].class_members){
+						if(item.class_role == '学生'){
+							count++
+						}
+						console.log('count:',count)
+					}
 				}))
 				return count
 			},

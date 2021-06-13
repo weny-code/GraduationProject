@@ -44,6 +44,7 @@
 		<view class="btn">
 			<u-button @click="upload">上传文件</u-button>
 		</view>
+		<u-modal @confirm="backToIndex" v-model="backShow" :content="backContent"></u-modal>
 	</view>
 </template>
 
@@ -63,6 +64,8 @@
 				upLoadFilesuccess:false,
 				show:false,
 				content:"",
+				backShow:false,
+				backContent:"",
 				noticeId:"",
 				imgStyle:{
 				    "height": "200rpx",   // 边框高度
@@ -97,6 +100,11 @@
 			}
 		},
 		methods: {
+			backToIndex() {
+				uni.reLaunch({
+					url: '../../../pages/index/index'
+				});
+			},
 			upload() {
 				if(this.chooseClass.length>0){
 					this.$refs.Imgfiles.upload()
@@ -117,6 +125,12 @@
 						file_detail:item
 					}).then((res=>{
 						console.log(res)
+						uni.showToast({
+							title: '上传成功！'
+						})
+						console.log(res)
+						this.backShow = true
+						this.backContent = "文件上传成功，请重新进入系统！！"
 					}))
 				}
  			},

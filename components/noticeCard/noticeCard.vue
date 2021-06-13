@@ -10,7 +10,7 @@
 						<view class="title">
 							{{noticeList.title}}
 						</view>
-						<view class="publish flex">
+						<view class="publish">
 							<view class="publisher">
 								{{noticeList.publisher}}
 							</view>
@@ -90,7 +90,7 @@
 				<view v-if="noticeList.type == '打卡'" class="type-clock">
 					打卡
 				</view>
-				<view v-if="noticeList.type == '填表'" class="type-clock">
+				<view v-if="noticeList.type == '填表'" class="type-inves">
 					填表
 				</view>
 			</view>
@@ -248,6 +248,9 @@
 			}
 			.publish{
 				margin-top: 4rpx;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
 				.publisher{
 					color: #333;
 				}
